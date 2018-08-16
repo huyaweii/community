@@ -1,0 +1,14 @@
+{
+  "name": "community",
+  "version": "1.0.0",
+  "description": "社区小程序",
+  "main": "api.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@minui/wxc-toast": "^1.0.9"
+  }
+}

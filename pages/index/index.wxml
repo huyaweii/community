@@ -1,0 +1,40 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="banner">
+    <image src="/static/images/banner.jpg" />
+  </view>
+  <view class="nav">
+    <navigator url="/pages/collect/collect" hover-class="navigator-hover" class="wrapper">
+      <image src="/static/images/banner.jpg" />
+      <span class="tit">二手交易</span>
+    </navigator>
+    <navigator url="/pages/choose/choose" hover-class="navigator-hover" class="wrapper">
+      <image src="/static/images/banner.jpg" />
+      <span class="tit">房屋租售</span>
+    </navigator>
+    <navigator url="/pages/choose/choose" hover-class="navigator-hover" class="wrapper">
+      <image src="/static/images/banner.jpg" />
+      <span class="tit">求职招聘</span>
+    </navigator>
+  </view>
+  <view class="list">
+    <view class="block" wx:for="{{postList}}" wx:for-item="post" wx:key="id">
+      <view class="info">
+        <image src="{{post.user.avatar}}" class="avatar"/>
+        <view class="detail">
+          <span class="name">{{post.user.name}}</span>
+          <span class="time">{{post.create_time}}</span>
+        </view>
+      </view>
+      <view class="post">
+        <view class="content">{{post.content}}</view>
+        <view class="reply">
+          <input bindinput="bindKeyInput" placeholder="请输入评论内容"/>
+        </view>
+      </view>
+    </view>
+  </view>
+  <navigator url="/pages/collect/collect" hover-class="navigator-hover" class="wrapper">
+    <view class="add">+</view>
+  </navigator>
+</view>
