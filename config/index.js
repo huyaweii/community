@@ -1,6 +1,3 @@
-const request = ({...params}) => {
-  wx.request({
-    ...params,
-    url: 'host' + params.url
-  })
-}
+export const anonymityList = [
+  '张三丰', '周芷若', '张无忌', '鲁智深', '二狗子', '孙悟空', '猪八戒', '亚瑟', '李白', '妲己'
+]

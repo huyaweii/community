@@ -1,6 +1,8 @@
+
 /**index.wxss**/
 .container {
   background: #efeded;
+  color: #666;
 }
 .banner {
   width: 100%;
@@ -38,8 +40,11 @@
 }
 .block {
   background: #fff;
-  margin-bottom: 10px;
+  margin-bottom: 20rpx;
   padding: 10px 0px;
+}
+.block:last-of-type {
+  margin-bottom: 0rpx;
 }
 .info {
   display: flex;
@@ -60,16 +65,21 @@
   margin-left: 10px;
 }
 .info .name{
-  font-size: 14px;
+  font-size: 32rpx;
+  color: #7594B3;
 }
 .info .time {
-  font-size: 12px; 
+  font-size: 30rpx; 
 }
 .post {
-  margin: 0 20px;
+  margin: 0 40rpx;
+}
+.post .tag { 
+  font-size: 32rpx;
+  color: #999;
 }
 .post .content {
-  font-size: 14px;
+  font-size: 32rpx;
   margin: 5px 0px;
 }
 .post input {
@@ -89,4 +99,81 @@
   line-height: 40px;
   border-radius: 50%;
   font-size: 20px;
+}
+.mask {
+  position: fixed;
+  left: 0rpx;
+  right: 0rpx;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 998;
+}
+.commentContainer {
+  position: fixed;
+  left: 0rpx;
+  bottom: 0rpx;
+  width: 100%;
+  height: 120rpx;
+  background: #fff;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.mask .commentInput {
+  width: 95%;
+  border: 1px solid #e2dede;
+  padding: 12rpx 0rpx 12rpx 10rpx;
+  font-size: 28rpx;
+  border-radius: 10rpx;
+}
+.reply input {
+  font-size: 30rpx;
+}
+.post .replyDetail {
+  font-size: 30rpx;
+  margin-bottom: 5rpx;
+}
+.post .replyDetail:first-of-type {
+  color: #f00;
+}
+.replyDetail .user, .replyDetail .atUser{
+  color: #7594B3;
+}
+.replyDetail .replyBtn {
+  color: #7594B3;
+  margin-left: 15rpx;
+}
+.pullUpLoading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 60rpx;
+  background: #fff;
+  color: #333;
+  font-size: 24rpx;
+}
+.activeReply {
+  background: rgba(3, 3, 3, 0.1);
+}
+.tradeWrap {
+  background: #fb944b;
+  color: #fff;
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.rentWrap {
+  background: #78cf49;
+}
+.jobWrap {
+  background: #60d0f9;
+}
+.tradeWrap i, .rentWrap i {
+  font-size: 60rpx;
 }

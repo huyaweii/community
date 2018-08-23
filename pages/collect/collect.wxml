@@ -1,13 +1,16 @@
 <form>
   <view class="section">
     <textarea placeholder="要发布的内容..." class="content" bindinput="changeContent"/>
-    <picker range="{{categoryList}}" value='{{index}}' range-key='name' bindchange="changeCategory">
+    <picker range="{{categoryList}}" value='{{index}}' range-key='name' bindchange="changeCategory" wx:if="{{type === 'community'}}">
       <view class="category">
         <span>{{categoryId ? categoryList[categoryIndex].name : '选择发布类别'}}</span>
         <span>》</span>  
       </view>
     </picker>
-    <wxc-toast is-show="{{true}}" text="提示成功!">we</wxc-toast>
+    <view class='anonymityWrap' wx:if="{{type === 'anonymity'}}">
+      <span>花名: {{anonymityName}}</span>
+      <view bindtap="changeAnonymityName">更换</view>
+    </view>
     <view class="publish" bindtap="publishPost">发布</view>
   </view>
 </form>

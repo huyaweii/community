@@ -1,0 +1,4 @@
+<!--index.wxml-->
+<view>
+  <button bindtap="test" open-type='getUserInfo' bindgetuserinfo='getUser'>授权</button>
+</view>

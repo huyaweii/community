@@ -2,12 +2,29 @@
   "pages":[
     "pages/index/index",
     "pages/logs/logs",
-    "pages/collect/collect"
+    "pages/collect/collect",
+    "pages/discover/index",
+    "pages/authorization/authorization"
   ],
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle":"black",
+    "onReachBottomDistance": 50
+  },
+  "tabBar": {
+    "list": [{
+      "pagePath": "pages/index/index",
+      "text": "社区"
+    }, 
+    {
+      "pagePath": "pages/discover/index",
+      "text": "发现"
+    },
+    {
+      "pagePath": "pages/logs/logs",
+      "text": "我的"
+    }]
   }
 }

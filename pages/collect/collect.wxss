@@ -35,3 +35,19 @@ page {
   flex-direction: row;
   justify-content: space-between;
 }
+.anonymityWrap {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+  font-size: 30rpx;
+  margin-top: 15rpx;
+  height: 80rpx;
+  padding:0 20rpx;
+  flex: 1;
+  color: #666;
+}
+.anonymityWrap view {
+  color: #7594B3;
+}

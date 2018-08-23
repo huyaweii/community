@@ -6,34 +6,34 @@ App({
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
-
     // 登录
     wx.login({
       success: loginResult => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
-        wx.getUserInfo({
-          success: function (userResult) {
-            const userInfo = userResult.userInfo
-            request({
-              url: '/login',
-              data: {
-                  code: loginResult.code,
-                  name: userInfo.nickName,
-                  avatar: userInfo.avatarUrl,
-                  gender: userInfo.gender
-              },
-              success: function (res) {
-                wx.setStorageSync('openid', res.data.openid)
-              }
-            })
+        request({
+          url: '/login',
+          data: {
+              code: loginResult.code,
+              // name: userInfo.nickName,
+              // avatar: userInfo.avatarUrl,
+              // gender: userInfo.gender
           },
+          success: function (res) {
+            wx.setStorageSync('openid', res.data.openid)
+          }
+        })
+        this.getUserInfo()
+        // wx.getUserInfo({
+        //   success: function (userResult) {
+        //     const userInfo = userResult.userInfo
+        //   },
 
-          fail: function (userError) {
-              // var error = new LoginError(constants.ERR_WX_GET_USER_INFO, '获取微信用户信息失败，请检查网络状态');
-              // error.detail = userError;
-              // callback(error, null);
-          },
-        });
+        //   fail: function (userError) {
+        //       // var error = new LoginError(constants.ERR_WX_GET_USER_INFO, '获取微信用户信息失败，请检查网络状态');
+        //       // error.detail = userError;
+        //       // callback(error, null);
+        //   },
+        // });
       }
     })
     // 获取用户信息
@@ -46,7 +46,6 @@ App({
     //           // 可以将 res 发送给后台解码出 unionId
     //           const userInfo = res.userInfo
     //           this.globalData.userInfo = userInfo
-    //           console.log(userInfo, wx.getStorageSync('openid'))
     //           wx.request({
     //             url: 'http://localhost:3000/update_user',
     //             data: {
@@ -68,6 +67,29 @@ App({
     //     }
     //   }
     // })
+  },
+  getUserInfo() {
+    const _this = this
+    wx.getUserInfo({
+      success: function (userResult) {
+        const userInfo = userResult.userInfo
+        _this.globalData.userInfo = userInfo
+        request({
+          url: '/update_user',
+          data: {
+              name: userInfo.nickName,
+              avatar: userInfo.avatarUrl,
+              gender: userInfo.gender,
+              openid: wx.getStorageSync('openid')
+          },
+          method: 'post',
+          success: function (res) {    
+          }
+        })
+      },
+      fail: function (userError) {
+      }
+    })
   },
   globalData: {
     userInfo: null
