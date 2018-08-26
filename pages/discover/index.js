@@ -18,20 +18,46 @@ Page({
   onShow: function(e){
     this.onLoad();
   },
+  onReachBottom: function () {
+    const _this = this
+    const {postPage, pageSize, nearbyPostList, anonymityPostList, count, pullUpLoading, activePage} = this.data
+    let postList = (activePage === 'nearby' ? nearbyPostList : anonymityPostList)
+    const postId = postList[postList.length - 1].id
+    if (postList.length < count) {
+      this.setData({pullUpLoading: true})
+      const postId = postList[postList.length - 1].id
+      request({
+        url: '/post',
+        data: {
+          postPage,
+          pageSize,
+          postId,
+          type: activePage
+        },
+        success: function (res) {
+          if (activePage === 'nearby') {
+            _this.setData({nearbyPostList: [...nearbyPostList, ...res.data.postList], pullUpLoading: false, postId})
+          } else {
+            _this.setData({anonymityPostList: [...postList, ...res.data.postList], pullUpLoading: false, postId})
+          }
+        }
+      })
+    }
+  },
   onLoad: function (options) {
     const {activePage = 'nearby'} = options || {}
     this.setData({activePage})
     const {postPage, pageSize} = this.data
     const _this = this
     request({
-      url: '/posts',
+      url: '/post',
       data: {
         postPage,
         pageSize,
         type: activePage
       },
       success: function (res) {
-        _this.setData({nearbyPostList: res.data.postList})
+        _this.setData({nearbyPostList: res.data.postList, count: res.data.count})
       }
     })
   },
@@ -54,7 +80,7 @@ Page({
     const _this = this
     if (activePage === 'anonymity' && anonymityPostList.length === 0) {
       request({
-        url: '/posts',
+        url: '/post',
         data: {
           postPage,
           pageSize,
@@ -92,7 +118,7 @@ Page({
       }
     }
     request({
-      url: '/reply_post',
+      url: '/post/reply',
       data,
       method: 'post',
       success: res => {
@@ -115,5 +141,30 @@ Page({
         }
       }
     })
+  },
+  praise: function(e) {
+    const {status, postId} = e.currentTarget.dataset
+    let nearbyPostList = [...this.data.nearbyPostList]
+    const idx = nearbyPostList.findIndex(post => post.id === postId)
+    nearbyPostList[idx] = {
+      ...nearbyPostList[idx],
+      isPraised: !status
+    }
+    this.setData({nearbyPostList})
+    const data = {
+      status: status ? 0 : 1,
+      postId
+    }
+    request({
+      url: '/post/praise',
+      data,
+      method: 'post',
+      success: res => {
+        console.log(res)
+      }
+    })
+    // if () {
+    //   console.log(e)
+    // }
   }
 })

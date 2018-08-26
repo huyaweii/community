@@ -58,7 +58,7 @@ Page({
       data.anonymity = this.data.anonymityName
     }
     request({
-      url: '/publish_post',
+      url: '/post/create',
       data,
       method: 'post',
       success: function (res) {

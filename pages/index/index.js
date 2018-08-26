@@ -24,11 +24,12 @@ Page({
   onReachBottom: function () {
     const _this = this
     const {postPage, pageSize, postList, count, pullUpLoading} = this.data
+    console.log(postList.length, count)
     if (postList.length < count) {
       this.setData({pullUpLoading: true})
       const postId = postList[postList.length - 1].id
       request({
-        url: '/posts',
+        url: '/post',
         data: {
           postPage,
           pageSize,
@@ -36,7 +37,7 @@ Page({
           type: 'community'
         },
         success: function (res) {
-          _this.setData({postList: [...postList, ...res.data.postList], pullUpLoading: false, postId})
+          _this.setData({postList: [...postList, ...res.data.postList], pullUpLoading: false, postId, postPage})
         }
       })
     }
@@ -122,7 +123,7 @@ Page({
       return wx.showToast({title: '内容不能为空哦', icon: 'none'})
     }
     request({
-      url: '/reply_post',
+      url: '/post/reply',
       data: {
         content: e.detail.value,
         post_id: willReplyPostId,

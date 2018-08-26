@@ -6,6 +6,7 @@ page {
   position: fixed;
   left: 0rpx;
   right: 0rpx;
+  z-index: 99;
   width: 100%;
   background: #fd790d;
   display: flex;
@@ -111,11 +112,9 @@ page {
   align-items: center;
   margin-top: 30rpx;
 }
-.post .iconWrapper i:first-of-type {
-  font-size: 42rpx;
-}
 .post .iconWrapper .icon-comment {
   margin-left: 32rpx;
+  font-size: 40rpx;
 }
 .replyDetail .user, .replyDetail .atUser{
   color: #7594B3;
@@ -196,4 +195,25 @@ page {
 .anonymityInfo .time {
   font-size: 26rpx;
   color: rgb(218, 222, 222)
+}
+.heartWrapper {
+  position: relative;
+  padding-top: 6rpx;
+}
+.heartWrapper .heartCount{
+  position: absolute;
+  right: -32rpx;
+  top: 0rpx;
+  background: #fff;
+  width: 50rpx;
+  height: 30rpx;
+  font-size:24rpx; 
+  color: #fd790d;
+}
+.heartWrapper i {
+  font-size: 46rpx;
+  margin-top: 4rpx;
+}
+.icon-heart {
+  color: red;
 }
