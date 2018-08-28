@@ -4,14 +4,16 @@
     "pages/logs/logs",
     "pages/collect/collect",
     "pages/discover/index",
-    "pages/authorization/authorization"
+    "pages/authorization/authorization",
+    "pages/mine/index",
+    "pages/postByCategory/index"
   ],
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
+    "navigationBarTitleText": "辛章街坊社区",
     "navigationBarTextStyle":"black",
-    "onReachBottomDistance": 50
+    "onReachBottomDistance": 300
   },
   "tabBar": {
     "list": [{
@@ -23,7 +25,7 @@
       "text": "发现"
     },
     {
-      "pagePath": "pages/logs/logs",
+      "pagePath": "pages/mine/index",
       "text": "我的"
     }]
   }

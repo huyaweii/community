@@ -4,7 +4,6 @@ const app = getApp()
 import {request} from '../../api'
 Page({
   data: {
-    motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
@@ -17,10 +16,6 @@ Page({
     count: null,
     commentPlaceholder: '请输入评论内容',
     loading: true
-  },
-
-  onShow:function(e){
-    this.onLoad();
   },
   onReachBottom: function () {
     const _this = this
@@ -42,25 +37,21 @@ Page({
       })
     }
   },
-  //事件处理函数
-  bindViewTap: function() {
-    wx.navigateTo({
-      url: '../logs/logs'
-    })
-  },
-  onLoad: function () {
+  onLoad: function (options) {
     const _this = this
     const {postPage, pageSize} = this.data
+    const {categoryId, categoryName} = options || {}
     request({
-      url: '/home',
+      url: `/post`,
       data: {
           postPage,
           pageSize,
-          postId: -1
+          categoryId,
+          type: 'community'
       },
       success: function (res) {
         const {postList, count} = res.data
-        _this.setData({postList, count, loading: false})
+        _this.setData({postList, count, loading: false, categoryId, categoryName})
       }
     })
   },

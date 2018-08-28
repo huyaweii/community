@@ -13,15 +13,19 @@ Page({
     pageSize: 10,
     willReplyPostId: null,
     atUserId: null,
-    anonymity: ''
+    anonymity: '',
+    loading: true,
+    nearbyCount: 0,
+    anonymityCount: 0
   },
   onShow: function(e){
     this.onLoad();
   },
   onReachBottom: function () {
     const _this = this
-    const {postPage, pageSize, nearbyPostList, anonymityPostList, count, pullUpLoading, activePage} = this.data
+    let {nearbyCount, anonymityCount, postPage, pageSize, nearbyPostList, anonymityPostList, count, pullUpLoading, activePage} = this.data
     let postList = (activePage === 'nearby' ? nearbyPostList : anonymityPostList)
+    count = (activePage === 'nearby' ? nearbyCount : anonymityCount)
     const postId = postList[postList.length - 1].id
     if (postList.length < count) {
       this.setData({pullUpLoading: true})
@@ -57,7 +61,7 @@ Page({
         type: activePage
       },
       success: function (res) {
-        _this.setData({nearbyPostList: res.data.postList, count: res.data.count})
+        _this.setData({nearbyPostList: res.data.postList, nearbyCount: res.data.count, loading: false})
       }
     })
   },
@@ -79,6 +83,7 @@ Page({
     const {postPage, pageSize, anonymityPostList} = this.data
     const _this = this
     if (activePage === 'anonymity' && anonymityPostList.length === 0) {
+      this.setData({loading: true})
       request({
         url: '/post',
         data: {
@@ -87,7 +92,7 @@ Page({
           type: activePage
         },
         success: function (res) {
-          _this.setData({anonymityPostList: res.data.postList})
+          _this.setData({anonymityPostList: res.data.postList, loading: false, anonymityCount: res.data.count})
         }
       })
     }
@@ -148,7 +153,8 @@ Page({
     const idx = nearbyPostList.findIndex(post => post.id === postId)
     nearbyPostList[idx] = {
       ...nearbyPostList[idx],
-      isPraised: !status
+      isPraised: !status,
+      praiseCount: status ? nearbyPostList[idx].praiseCount - 1 : nearbyPostList[idx].praiseCount + 1
     }
     this.setData({nearbyPostList})
     const data = {
@@ -160,11 +166,8 @@ Page({
       data,
       method: 'post',
       success: res => {
-        console.log(res)
+        console.log('点赞成功')
       }
     })
-    // if () {
-    //   console.log(e)
-    // }
   }
 })

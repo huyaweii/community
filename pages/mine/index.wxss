@@ -1,0 +1,53 @@
+page {
+  background: #efeded;
+}
+.info {
+  width: 100%;
+  height: 200rpx;
+  background: #fff;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0 40rpx;
+  box-sizing: border-box;
+}
+.info .avatar {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+}
+.info .nameAge {
+  display: flex;
+  flex-direction: column;
+  font-size: 32rpx;
+}
+.info .nameAge text{
+  margin-left: 40rpx;
+}
+.info .userInfoBtn {
+  font-size: 26rpx;
+  border: none;
+  background: none;
+  outline: none;
+  padding: 0 14rpx;
+  line-height: 2.1;
+  margin-left: 40rpx; 
+}
+.info .icon-denglu {
+  font-size: 60rpx;
+  color: #999;
+  border-radius: 50%;
+}
+.info .loginWrap {
+  width: 100rpx;
+  height: 100rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #999;
+  border-radius: 50%;
+}
+.listWrapper {
+  width: 100%;
+  margin-top: 30rpx;
+}

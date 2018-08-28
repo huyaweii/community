@@ -1,6 +1,12 @@
 <form>
   <view class="section">
     <textarea placeholder="要发布的内容..." class="content" bindinput="changeContent"/>
+    <view class='pictureOuter'>
+      <view class="pictureWrap">
+        <image wx:for="{{images}}" wx:for-item="image" src="{{image}}" />
+        <view class='iconWrapper' bindtap='didPressChooseImage'><i class='iconfont icon-add'/></view>
+      </view>
+    </view>
     <picker range="{{categoryList}}" value='{{index}}' range-key='name' bindchange="changeCategory" wx:if="{{type === 'community'}}">
       <view class="category">
         <span>{{categoryId ? categoryList[categoryIndex].name : '选择发布类别'}}</span>

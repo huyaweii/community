@@ -1,34 +1,6 @@
 <!--index.wxml-->
 <view class="container">
-  <view class="banner">
-    <image src="/static/images/banner.jpg" />
-  </view>
-  <view class="nav">
-    <navigator url="/pages/postByCategory/index?categoryId=1&categoryName=二手交易" hover-class="navigator-hover" class="wrapper">
-      <view class='tradeWrap'>
-        <i class='iconfont icon-jiaoyijilu'/>
-      </view>
-      <span class="tit">二手交易</span>
-    </navigator>
-    <navigator url="/pages/postByCategory/index?categoryId=2&categoryName=房屋租售" hover-class="navigator-hover" class="wrapper">
-      <view class='tradeWrap rentWrap'>
-        <i class='iconfont icon-fangwuzushou'/>
-      </view>
-      <span class="tit">房屋租售</span>
-    </navigator>
-    <navigator url="/pages/postByCategory/index?categoryId=3&categoryName=求职招聘" class="wrapper">
-      <view class='tradeWrap jobWrap'>
-        <i class='iconfont icon-zhaopin'/>
-      </view>
-      <span class="tit">求职招聘</span>
-    </navigator>
-    <navigator url="/pages/postByCategory/index?categoryId=4&categoryName=失物招领" hover-class="navigator-hover" class="wrapper">
-      <view class='tradeWrap foundWrap'>
-        <i class='iconfont icon-found'/>
-      </view>
-      <span class="tit">失物招领</span>
-    </navigator>
-  </view>
+  <view class='bar'>辛章社区 <span><i-icon type="enter" size="12"/></span> {{categoryName}}</view>
   <view class='loadingWrapper' wx:if="{{loading}}">
     <loading size='large' title='加载中...'></loading>
   </view>

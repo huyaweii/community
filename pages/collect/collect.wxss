@@ -51,3 +51,32 @@ page {
 .anonymityWrap view {
   color: #7594B3;
 }
+.pictureOuter {
+  width: 100%;
+  background: #fff;
+  padding-bottom: 20rpx;
+}
+.pictureWrap {
+  width: 740rpx;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.pictureWrap image {
+  width: 180rpx;
+  height: 180rpx;
+  margin: 0rpx 2.5rpx 5rpx 2.5rpx;
+}
+.iconWrapper {
+  width: 180rpx;
+  height: 180rpx;
+  text-align: center;
+  line-height: 180rpx;
+  background: rgb(224, 224, 224);
+  margin: 0 2.5rpx;
+}
+.iconWrapper i {
+  color: #fff;
+  font-size: 80rpx;
+}
