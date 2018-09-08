@@ -1,22 +1,23 @@
 <!--logs.wxml-->
 <view class="container">
   <view class='info'>
-    <image wx:if="{{userInfo}}" class='avatar' src="{{userInfo.avatarUrl}}" />
-    <view wx:else class='loginWrap'>
-      <i class='iconfont icon-denglu' />
+    <view style="background-image: url({{userInfo.avatarUrl}})" class='bgImage'></view>
+    <view class='infoInner' wx:if="{{userInfo}}">
+      <image class='avatar' src="{{userInfo.avatarUrl}}" />
+      <view class='nameAge'>
+        <text>{{userInfo.nickName}}</text>
+        <text>{{userInfo.gender === 1 ? '男' : '女'}}</text>
+      </view>
     </view>
-    <view class='nameAge' wx:if="{{userInfo}}">
-      <text>{{userInfo.nickName}}</text>
-      <text>{{userInfo.gender === 1 ? '男' : '女'}}</text>
-    </view>
-    <view wx:else class='nameAge'>
-      <button open-type="getUserInfo" bindgetuserinfo="getUserInfo" class='userInfoBtn'>点击登录</button>
+    <view class='infoInner loginWrap' wx:else>
+      <button class='userInfoBtn' bindtap="login">点击登录</button>
     </view>
   </view>
+  <view class='mask'></view>
   <view class="listWrapper">
     <i-cell-group>
-      <i-cell title="我发布的动态" is-link></i-cell>
-      <i-cell title="我的评论" is-link url="/pages/dashboard/index"></i-cell>
+      <i-cell title="我的动态" is-link url="./post/index"></i-cell>
+      <i-cell title="关于街坊社" is-link url="./about/index"></i-cell>
     </i-cell-group>
   </view>
 </view>

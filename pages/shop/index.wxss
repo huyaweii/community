@@ -1,0 +1,49 @@
+.bar {
+  width: 100%;
+  background: #fd790d;
+  color: #fff;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 32rpx;
+  height: 80rpx;
+  padding-left: 40rpx;
+  box-sizing: border-box;
+}
+.bar span {
+  margin: -4rpx 10rpx 0rpx 10rpx;
+}
+.serviceWrapper {
+  width: 100%;
+  display: flex;
+  flex: 1;
+  margin-top: 20rpx;
+}
+.service {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background: #fff;
+  height: 260rpx;
+  justify-content: center;
+  align-items: center;
+  margin-right: 1px;
+  color: #666;
+  font-size: 34rpx;
+}
+.service i {
+  font-size: 64rpx;
+}
+.icon-repair {
+  color: rgb(22, 168, 80)
+}
+.icon-decoration {
+  color: rgb(220, 130, 50)
+}
+.icon-mobile {
+  color: rgb(220, 80, 100)
+}
+.activeService {
+  background:  rgba(3, 3, 3, 0.1);
+}

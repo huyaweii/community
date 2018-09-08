@@ -87,6 +87,13 @@ Page({
     const {postId, atUserId, commentPlaceholder} = e.currentTarget.dataset
     this.setData({willReplyPostId: postId, atUserId, commentPlaceholder})
   },
+  toPublish: function(e) {
+    app.isAuthed('/pages/index/index', () => {
+      wx.navigateTo({
+        url: '/pages/collect/collect?type=community'
+      })  
+    })
+  },
   // changePostId: function(e) {
   //   this.setData({wid})
   // }
@@ -117,5 +124,14 @@ Page({
   },
   closeMask: function() {
     this.setData({willReplyPostId: null})
+  },
+  preview: function(e) {
+    const {idx, urls} = e.currentTarget.dataset
+    wx.previewImage(
+      {
+        current: idx, 
+        urls
+      }
+    )
   }
 })

@@ -3,10 +3,17 @@
     "pages/index/index",
     "pages/logs/logs",
     "pages/collect/collect",
+    "pages/dynamic/index",
     "pages/discover/index",
     "pages/authorization/authorization",
     "pages/mine/index",
-    "pages/postByCategory/index"
+    "pages/mine/about/index",
+    "pages/mine/post/index",
+    "pages/mine/post/list",
+    "pages/postByCategory/index",
+    "pages/login/index",
+    "pages/shop/index",
+    "pages/shop/shopkeepers/index"
   ],
   "window":{
     "backgroundTextStyle":"light",
@@ -21,7 +28,7 @@
       "text": "社区"
     }, 
     {
-      "pagePath": "pages/discover/index",
+      "pagePath": "pages/dynamic/index",
       "text": "发现"
     },
     {

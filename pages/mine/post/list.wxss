@@ -1,0 +1,75 @@
+page {
+  background: #efeded;
+}
+.block {
+  background: #fff;
+  margin-bottom: 20rpx;
+  padding: 10px 0px;
+}
+.block:last-of-type {
+  margin-bottom: 0rpx;
+}
+
+.post {
+  margin: 0 40rpx;
+}
+.post .tag { 
+  font-size: 32rpx;
+  color: #999;
+}
+.post .content {
+  font-size: 32rpx;
+  margin: 5px 0px;
+}
+.post input {
+  border: 1px solid #d9dbde;
+  font-size: 14px;
+  padding: 2px 5px;
+}
+.info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 40rpx;
+}
+.info .avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50px;
+}
+.info .detail {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+}
+.info .name{
+  font-size: 32rpx;
+  color: #7594B3;
+}
+.info .time {
+  font-size: 30rpx; 
+}
+.reply {
+  font-size: 30rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+.reply i {
+  font-size: 40rpx;
+}
+.post .replyDetail {
+  font-size: 30rpx;
+  margin-bottom: 5rpx;
+}
+.post .replyDetail:first-of-type {
+  color: #f00;
+}
+.replyDetail .user, .replyDetail .atUser{
+  color: #7594B3;
+}
+.replyDetail .replyBtn {
+  color: #7594B3;
+  margin-left: 15rpx;
+}

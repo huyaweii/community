@@ -34,6 +34,8 @@ page {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
+  color: #999;
 }
 .anonymityWrap {
   display: flex;
@@ -79,4 +81,7 @@ page {
 .iconWrapper i {
   color: #fff;
   font-size: 80rpx;
+}
+.icon-right {
+  font-size: 32rpx;
 }

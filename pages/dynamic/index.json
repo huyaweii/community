@@ -2,5 +2,7 @@
   "usingComponents": {
     "loading": "../../components/loading/index",
     "post-image": "../../components/postImage/index"
-  }
+  },
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark"
 }

@@ -10,7 +10,7 @@
     <picker range="{{categoryList}}" value='{{index}}' range-key='name' bindchange="changeCategory" wx:if="{{type === 'community'}}">
       <view class="category">
         <span>{{categoryId ? categoryList[categoryIndex].name : '选择发布类别'}}</span>
-        <span>》</span>  
+        <span class='iconfont icon-right'></span>  
       </view>
     </picker>
     <view class='anonymityWrap' wx:if="{{type === 'anonymity'}}">

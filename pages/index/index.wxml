@@ -1,7 +1,7 @@
 <!--index.wxml-->
 <view class="container">
   <view class="banner">
-    <image src="/static/images/banner.jpg" />
+    <image src="http://ojs08uydv.bkt.clouddn.com/banner.jpg" />
   </view>
   <view class="nav">
     <navigator url="/pages/postByCategory/index?categoryId=1&categoryName=二手交易" hover-class="navigator-hover" class="wrapper">
@@ -28,6 +28,12 @@
       </view>
       <span class="tit">失物招领</span>
     </navigator>
+    <navigator url="/pages/shop/index" hover-class="navigator-hover" class="wrapper">
+      <view class='tradeWrap shopWrap'>
+        <i class='iconfont icon-shop'/>
+      </view>
+      <span class="tit">商家查询</span>
+    </navigator>
   </view>
   <view class='loadingWrapper' wx:if="{{loading}}">
     <loading size='large' title='加载中...'></loading>
@@ -43,6 +49,8 @@
       </view>
       <view class="post">
         <view class="content"><span class='tag'>#{{post.categoryName}}# </span>{{post.content}}</view>
+        <post-image images="{{post.images}}"></post-image>
+        
         <view class='replyDetail' wx:for="{{post.replys}}" wx:for-item="reply" wx:key="id" hover-class='activeReply' bindtap="changePostId" data-post-id="{{post.id}}" data-at-user-id="{{reply.user.id}}" data-comment-placeholder="{{'回复' + reply.user.name}}">
           <span class='user'>{{reply.user.name}} </span><span wx:if="{{reply.at_user_id}}"><span class='response'>回复了</span><span class='atUser'> {{reply.at_user.name}} </span></span>
           <span class='replyContent'>{{reply.content}} </span>
@@ -61,7 +69,7 @@
       <input type='text' class='commentInput' catchtap placeholder="{{commentPlaceholder}}" focus confirm-type="send" bindconfirm='submitComment'/>
     </view>
   </view>
-  <navigator url="/pages/collect/collect?type=community" hover-class="navigator-hover" class="wrapper">
+  <view hover-class="navigator-hover" class="wrapper" bindtap='toPublish'>
     <view class="add">+</view>
-  </navigator>
+  </view>
 </view>

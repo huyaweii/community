@@ -1,0 +1,20 @@
+<view class='container'>
+   <view class='bar'>辛章社区 <span><i-icon type="enter" size="12"/></span> 商家查询</view>
+  <view class='list'>
+    <view class='block' wx:for="{{shopkeepers}}" wx:for-item="shopkeeper" wx:key="{{shopkeeper.id}}">
+      <view class='left'>
+        <image class='avatar' src='{{shopkeeper.user.avatar}}' />
+        <span class='praiseCount'>{{index + 1}}</span>
+      </view>
+      <view class='right'>
+        <view class='nameWrapper'>
+          <span class='name'>{{shopkeeper.shop_name}}</span>
+          <span bindtap="praise" data-status="{{shopkeeper.is_praised}}" data-shopkeeper-id="{{shopkeeper.id}}">{{shopkeeper.praise_count}} <i class='iconfont icon-praise' style="color: {{shopkeeper.is_praised ? '#fd790d' : ''}}"></i></span>
+        </view>
+        <span>联系人：{{shopkeeper.keeper_name}}</span>
+        <span>电话：{{shopkeeper.telephone}}</span>
+        <span>地址：{{shopkeeper.address}}</span>
+      </view>
+    </view>
+  </view>
+</view>

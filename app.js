@@ -19,7 +19,7 @@ App({
               // gender: userInfo.gender
           },
           success: function (res) {
-            wx.setStorageSync('openid', res.data.openid)
+            wx.setStorageSync('token', res.data.token)
           }
         })
         this.getUserInfo()
@@ -91,7 +91,21 @@ App({
       }
     })
   },
+  isAuthed(url, callback) {
+    wx.getSetting({
+      success: res => {
+        if (res.authSetting['scope.userInfo']) {
+          callback()
+        } else {
+        wx.navigateTo({
+            url: `/pages/login/index?url=${url}`
+          })
+        }
+      }
+    })  
+  },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    dynamicActivePage: 'nearby'
   }
 })

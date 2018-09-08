@@ -1,0 +1,9 @@
+<view class='wrapper'>
+   <view class='bar'>辛章社区 <span><i-icon type="enter" size="12"/></span> 商家查询</view>
+   <view class='serviceWrapper'>
+      <navigator wx:for="{{services}}" wx:for-item="service" wx:key="id" class='service' hover-class="activeService" url='/pages/shop/shopkeepers/index?serviceId={{service.id}}'>
+        <i class="iconfont icon-{{servicesIcon[service['name']]}}"></i>
+        <span>{{service['name']}}</span>
+      </navigator>
+   </view>
+</view>

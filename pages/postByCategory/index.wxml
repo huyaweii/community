@@ -19,6 +19,7 @@
           <span class='user'>{{reply.user.name}} </span><span wx:if="{{reply.at_user_id}}"><span class='response'>回复了</span><span class='atUser'> {{reply.at_user.name}} </span></span>
           <span class='replyContent'>{{reply.content}} </span>
         </view>
+        <post-image images="{{post.images}}"></post-image>
         <view class="reply">
           <i class='iconfont icon-comment' bindtap="changePostId" data-post-id="{{post.id}}" data-at-user-id="{{null}}" data-comment-placeholder="请输入评论内容"/>
         </view>

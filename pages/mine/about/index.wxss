@@ -1,0 +1,9 @@
+page .wrapper{
+  padding: 10rpx 30rpx  0rpx 30rpx;
+  font-size: 32rpx;
+  text-indent: 64rpx;
+  text-align: justify;
+}
+.wrapper view {
+  margin-bottom: 30rpx;
+}

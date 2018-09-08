@@ -44,7 +44,7 @@ Page({
     this.setData({categoryId: this.data.categoryList[val].id, categoryIndex: val})
   },
   publishPost () {
-    const {content, categoryId, type} = this.data
+    const {content, categoryId, type, images} = this.data
     if (!content) {
       return wx.showToast({title: '请填写帖子内容', icon: 'none'})
     }
@@ -55,6 +55,7 @@ Page({
       content,
       type,
       category_id: this.data.categoryId,
+      images,
       openid: wx.getStorageSync('openid')
     }
     if (type === 'anonymity') {
@@ -65,6 +66,7 @@ Page({
       data,
       method: 'post',
       success: function (res) {
+        app.globalData.dynamicActivePage = type
         if (type === 'community') {
           wx.switchTab({
             url: '/pages/index/index'
@@ -72,12 +74,12 @@ Page({
         }
         if (type === 'nearby') {
           wx.switchTab({
-            url: '/pages/discover/index'
+            url: '/pages/dynamic/index'
           })
         }
         if (type === 'anonymity') {
           wx.switchTab({
-            url: '../discover/index?activePage=anonymity'
+            url: '../dynamic/index?activePage=anonymity'
           });
         }
       }
@@ -112,6 +114,7 @@ Page({
           success: res => {
             const qiniuUploadToken = res.data.uploadToken
             filePaths.forEach(filePath => {
+              wx.showLoading({title: '上传中'})
               qiniuUploader.upload(filePath, (res) => {
                 // 每个文件上传成功后,处理相关的事情
                 // 其中 info 是文件上传成功后，服务端返回的json，形式如
@@ -122,10 +125,10 @@ Page({
                 // 参考http://developer.qiniu.com/docs/v6/api/overview/up/response/simple-response.html
                 const images = [..._this.data.images]
                 images.push(`http://ojs08uydv.bkt.clouddn.com/${res.key}`)
-                console.log(images)
                 _this.setData({
                   images
                 });
+                wx.hideLoading()
               }, (error) => {
             console.log('error: ' + error);
               }, {
