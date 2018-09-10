@@ -84,7 +84,7 @@ Page({
     })
   },
   changePostId: function(e) {
-    const {postId, atUserId, commentPlaceholder} = e.currentTarget.dataset
+    const {postId, atUserId, commentPlaceholder} = e.detail
     this.setData({willReplyPostId: postId, atUserId, commentPlaceholder})
   },
   toPublish: function(e) {

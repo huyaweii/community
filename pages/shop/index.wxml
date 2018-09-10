@@ -1,9 +1,14 @@
 <view class='wrapper'>
-   <view class='bar'>辛章社区 <span><i-icon type="enter" size="12"/></span> 商家查询</view>
-   <view class='serviceWrapper'>
-      <navigator wx:for="{{services}}" wx:for-item="service" wx:key="id" class='service' hover-class="activeService" url='/pages/shop/shopkeepers/index?serviceId={{service.id}}'>
+    <view class='bar'>
+      <view>辛章社区 <span><i-icon type="enter" size="12"/></span> 商家查询</view>
+      <navigator url='/pages/shop/application/index'>
+        <i class='iconfont icon-apply'></i>
+      </navigator>
+    </view>
+    <view class='serviceWrapper' wx:for="{{services}}" wx:for-item="servicesOfRow">
+      <navigator wx:for="{{servicesOfRow}}" wx:for-item="service" wx:key="id" class='service' hover-class="activeService" url='/pages/shop/shopkeepers/index?serviceId={{service.id}}'>
         <i class="iconfont icon-{{servicesIcon[service['name']]}}"></i>
         <span>{{service['name']}}</span>
       </navigator>
-   </view>
+    </view>
 </view>

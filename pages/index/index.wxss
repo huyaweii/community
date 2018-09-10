@@ -75,7 +75,8 @@ page {
   color: #7594B3;
 }
 .info .time {
-  font-size: 30rpx; 
+  font-size: 28rpx; 
+  color: #999;
 }
 .post {
   margin: 0 40rpx;
@@ -83,10 +84,11 @@ page {
 .post .tag { 
   font-size: 32rpx;
   color: #999;
+  margin-right: 5rpx;
 }
 .post .content {
   font-size: 32rpx;
-  margin: 5px 0px;
+  margin: 20rpx 0px 10rpx 0rpx;
 }
 .post input {
   border: 1px solid #d9dbde;
@@ -140,12 +142,14 @@ page {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
+  margin-top: 10rpx;
 }
 .reply i {
   font-size: 40rpx;
+  color: #666;
 }
 .post .replyDetail {
-  font-size: 30rpx;
+  font-size: 28rpx;
   margin-bottom: 5rpx;
 }
 .post .replyDetail:first-of-type {

@@ -1,25 +1,28 @@
 var app = getApp()
-import {request} from '../../api'
+import {asyncRequest} from '../../api'
+const regeneratorRuntime = require('../../utils/runtime.js')
+
 const servicesIcon = {
   '房屋装修': 'repair',
   '家电维修': 'decoration',
-  '手机专卖': 'mobile'
+  '手机专卖': 'mobile',
+  '宽带安装': 'broadband'
 }
 Page({
   data: {
     services: [],
     servicesIcon
   },
-  onLoad: function (options) {
+  onLoad: async function (options) {
     const _this = this
-    request({
+    const {services} = await asyncRequest({
       url: '/merchantService',
-      data: {
-      },
-      success: function (res) {
-        console.log(res.data.services)
-       _this.setData({services: res.data.services})
-      }
     })
+    let tempServices = []
+    for(let i=0,len = services.length; i<len; i+=3){
+      tempServices.push(services.slice(i,i+3));
+    }
+    console.log(tempServices)
+    this.setData({services: tempServices})
   }  
 })

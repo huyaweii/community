@@ -5,26 +5,7 @@
     <loading size='large' title='加载中...'></loading>
   </view>
   <view class="list" wx:else>
-    <view class="block" wx:for="{{postList}}" wx:for-item="post" wx:key="id">
-      <view class="info">
-        <image src="{{post.user.avatar}}" class="avatar"/>
-        <view class="detail">
-          <span class="name">{{post.user.name}}</span>
-          <span class="time">{{post.create_time}}</span>
-        </view>
-      </view>
-      <view class="post">
-        <view class="content"><span class='tag'>#{{post.categoryName}}# </span>{{post.content}}</view>
-        <view class='replyDetail' wx:for="{{post.replys}}" wx:for-item="reply" wx:key="id" hover-class='activeReply' bindtap="changePostId" data-post-id="{{post.id}}" data-at-user-id="{{reply.user.id}}" data-comment-placeholder="{{'回复' + reply.user.name}}">
-          <span class='user'>{{reply.user.name}} </span><span wx:if="{{reply.at_user_id}}"><span class='response'>回复了</span><span class='atUser'> {{reply.at_user.name}} </span></span>
-          <span class='replyContent'>{{reply.content}} </span>
-        </view>
-        <post-image images="{{post.images}}"></post-image>
-        <view class="reply">
-          <i class='iconfont icon-comment' bindtap="changePostId" data-post-id="{{post.id}}" data-at-user-id="{{null}}" data-comment-placeholder="请输入评论内容"/>
-        </view>
-      </view>
-    </view>
+    <community-post postList="{{postList}}" bind:changePostId="changePostId"></community-post>    
   </view>
   <view class='pullUpLoading' wx:if="{{pullUpLoading}}">
       <loading></loading>

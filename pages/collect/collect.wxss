@@ -85,3 +85,19 @@ page {
 .icon-right {
   font-size: 32rpx;
 }
+
+.imageOuter {
+  width: 25%;
+  border-right: 0.2rem solid #fff;
+  box-sizing: border-box;
+}
+.imageWrapper{
+  width: 100%;
+  height: 0rem;
+  padding-top: 100%;
+  margin: 0rpx 2.5rpx 5rpx 2.5rpx;
+  flex-shrink: 0;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}

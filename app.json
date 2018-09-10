@@ -13,7 +13,8 @@
     "pages/postByCategory/index",
     "pages/login/index",
     "pages/shop/index",
-    "pages/shop/shopkeepers/index"
+    "pages/shop/shopkeepers/index",
+    "pages/shop/application/index"
   ],
   "window":{
     "backgroundTextStyle":"light",
@@ -23,17 +24,25 @@
     "onReachBottomDistance": 300
   },
   "tabBar": {
+    "color": "#999",
+    "selectedColor": "#fd790d",
     "list": [{
       "pagePath": "pages/index/index",
-      "text": "社区"
+      "text": "社区",
+      "iconPath": "./static/images/community.png",
+      "selectedIconPath": "./static/images/community-selected.png"
     }, 
     {
       "pagePath": "pages/dynamic/index",
-      "text": "发现"
+      "text": "发现",
+      "iconPath": "./static/images/discover.png",
+      "selectedIconPath": "./static/images/discover-selected.png"
     },
     {
       "pagePath": "pages/mine/index",
-      "text": "我的"
+      "text": "我的",
+      "iconPath": "./static/images/mine.png",
+      "selectedIconPath": "./static/images/mine-selected.png"
     }]
   }
 }

@@ -95,7 +95,9 @@ App({
     wx.getSetting({
       success: res => {
         if (res.authSetting['scope.userInfo']) {
-          callback()
+          if (callback) {
+            callback()
+          }
         } else {
         wx.navigateTo({
             url: `/pages/login/index?url=${url}`

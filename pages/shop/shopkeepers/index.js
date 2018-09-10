@@ -17,11 +17,8 @@ Page({
   },
   praise: function (e) {
     const {status, shopkeeperId} = e.currentTarget.dataset
-    console.log(e.currentTarget.dataset)
     let shopkeepers = [...this.data.shopkeepers]
-    console.log(shopkeeperId)
     const idx = shopkeepers.findIndex(shopkeeper => shopkeeper.id === shopkeeperId)
-    console.log(shopkeepers[idx])
     shopkeepers[idx] = {
       ...shopkeepers[idx],
       is_praised: !status,

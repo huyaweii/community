@@ -1,0 +1,47 @@
+<view wx:if="{{showForm}}">
+  <view class='formItem'>
+    <view class='title'>商家名称</view>:
+    <input value="{{shopName}}" type='text' bindinput='change' data-name='shopName' maxlength='10'/>
+  </view>
+  <picker range="{{services}}" value='{{index}}' range-key='name' bindchange="changeService">
+    <view class='formItem'>
+      <view class='title'>商家类型</view>:
+      <input type='text' disabled bindinput='change' data-name='address' value="{{selectedService.name}}" maxlength='20'/>
+    </view>
+  </picker>
+  <view class='formItem'>
+    <view class='title'>姓名</view>:
+    <input type='text' bindinput='change' data-name='keeperName' value="{{keeperName}}" maxlength='4'/>
+  </view>
+    <view class='formItem'>
+    <view class='title'>联系电话</view>:
+    <input type='number' bindinput='change' data-name='telephone' value="{{telephone}}" maxlength='11'/>
+  </view>
+  <view class='formItem'>
+    <view class='title'>地址</view>:
+    <input type='text' bindinput='change' data-name='address' value="{{address}}" maxlength='20'/>
+  </view>
+  <view class="sub" bindtap="submit">提交</view>
+</view>
+<view wx:else class='statusWrap'>
+ <view class='statusInner' wx:if="{{shopkeeper.status === 0}}">
+    <i class='iconfont icon-check-fail'></i>
+    <text>审核失败</text>
+  </view>
+  <view class='statusInner' wx:if="{{shopkeeper.status === 1}}">
+    <i class='iconfont icon-checking'></i>
+    <text>审核中</text>
+  </view>
+  <view class='statusInner' wx:if="{{shopkeeper.status === 2}}">
+    <i class='iconfont icon-check'></i>
+    <text>审核通过</text>
+  </view>
+  <ul>
+    <li><view class='title'>商家名称</view>：{{shopName}}</li>
+    <li><view class='title'>商家类型</view>：{{selectedService.name}}</li>
+    <li><view class='title'>姓名</view>：{{keeperName}}</li>
+    <li><view class='title'>联系电话</view>：{{telephone}}</li>
+    <li><view class='title'>地址</view>：{{address}}</li>
+  </ul>
+  <view class="sub" bindtap="toShowForm">重新申请</view>
+</view>

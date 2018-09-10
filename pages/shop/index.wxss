@@ -4,12 +4,13 @@
   color: #fff;
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
   font-size: 32rpx;
   height: 80rpx;
   padding-left: 40rpx;
   box-sizing: border-box;
+  margin-bottom: 20rpx;
 }
 .bar span {
   margin: -4rpx 10rpx 0rpx 10rpx;
@@ -18,12 +19,12 @@
   width: 100%;
   display: flex;
   flex: 1;
-  margin-top: 20rpx;
+  margin-bottom: 1rpx;
 }
 .service {
   display: flex;
   flex-direction: column;
-  flex: 1;
+  flex: 0.33333;
   background: #fff;
   height: 260rpx;
   justify-content: center;
@@ -43,6 +44,14 @@
 }
 .icon-mobile {
   color: rgb(220, 80, 100)
+}
+.icon-broadband {
+  color: rgb(220, 130, 50)
+}
+.icon-apply {
+  display: block;
+  padding-top: 8rpx;
+  margin-right: 30rpx;
 }
 .activeService {
   background:  rgba(3, 3, 3, 0.1);

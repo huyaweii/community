@@ -1,4 +1,4 @@
-<view class='imagesWrapper'>
+<view class='imagesWrapper' wx:if="{{images.length > 0}}">
   <view class='imageOuter' wx:for="{{images}}" wx:for-item="img" wx:key="img" data-current="{{img}}" bindtap='preview' data-idx="{{idx}}" data-urls="{{images}}">
     <view class='imageWrapper' style="background-image: url({{img}})"/>
   </view>

@@ -1,6 +1,7 @@
 .imagesWrapper {
   display: flex;
   flex-direction: row;
+  padding: 10rpx 0rpx;
 }
 .imageOuter {
   width: 25%;
@@ -17,3 +18,4 @@
   background-position: center;
   background-size: cover;
 }
+

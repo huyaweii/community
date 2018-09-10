@@ -1,6 +1,6 @@
 {
   "usingComponents": {
     "loading": "../../components/loading/index",
-    "post-image": "../../components/postImage/index"
+    "community-post": "../../components/communityPost/index"
   }
 }
