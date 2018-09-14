@@ -42,7 +42,7 @@ Page({
     const {postPage, pageSize} = this.data
     const {type} = options || {}
     request({
-      url: `/post/user/${wx.getStorageSync('openid')}`,
+      url: `/post/user/myself`,
       data: {
           postPage,
           pageSize,

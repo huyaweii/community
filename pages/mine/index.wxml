@@ -17,7 +17,11 @@
   <view class="listWrapper">
     <i-cell-group>
       <i-cell title="我的动态" is-link url="./post/index"></i-cell>
-      <i-cell title="关于街坊社" is-link url="./about/index"></i-cell>
+      <i-cell title="关于小小街坊" is-link url="./about/index"></i-cell>
+    </i-cell-group>
+
+    <i-cell-group i-class='suggestion'>
+      <i-cell title="意见反馈" is-link url="./suggestion/index"></i-cell>
     </i-cell-group>
   </view>
 </view>

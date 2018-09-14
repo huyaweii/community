@@ -10,6 +10,7 @@
     "pages/mine/about/index",
     "pages/mine/post/index",
     "pages/mine/post/list",
+    "pages/mine/suggestion/index",
     "pages/postByCategory/index",
     "pages/login/index",
     "pages/shop/index",
@@ -18,9 +19,9 @@
   ],
   "window":{
     "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#fff",
+    "navigationBarBackgroundColor": "#fd790d",
     "navigationBarTitleText": "辛章街坊社区",
-    "navigationBarTextStyle":"black",
+    "navigationBarTextStyle":"white",
     "onReachBottomDistance": 300
   },
   "tabBar": {
