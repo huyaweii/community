@@ -24,6 +24,9 @@ export const asyncRequest = ({...params}) => {
       },
       method: params.method || 'get',
       success: function (res) {
+        if (res.data.error) {
+          reject(res.data.error)
+        }
         resolve(res.data)
       },
       fail: function (res) {

@@ -1,8 +1,10 @@
 //index.js
 //获取应用实例
 const app = getApp()
-import {request} from '../../api'
+const regeneratorRuntime = require('../../utils/runtime.js')
+import {request, asyncRequest} from '../../api'
 import {anonymityList} from '../../config/index.js'
+
 Page({
   data: {
     activePage: 'nearby',
@@ -62,32 +64,34 @@ Page({
           if (activePage === 'nearby') {
             _this.setData({nearbyPostList: [...nearbyPostList, ...res.data.postList], pullUpLoading: false, postId})
           } else {
-            _this.setData({anonymityPostList: [...postList, ...res.data.postList], pullUpLoading: false, postId})
+            // _this.setData({anonymityPostList: [...postList, ...res.data.postList], pullUpLoading: false, postId})
           }
         }
       })
     }
   },
-  onLoad: function (options) {
+  onLoad: async function (options) {
     const activePage = app.globalData.dynamicActivePage
     this.setData({activePage})
     const {postPage, pageSize} = this.data
     const _this = this
-    request({
-      url: '/post',
-      data: {
-        postPage,
-        pageSize,
-        type: activePage
-      },
-      success: function (res) {
-        if (activePage === 'nearby') {
-          _this.setData({nearbyPostList: res.data.postList, nearbyCount: res.data.count, loading: false})
-        } else {
-          _this.setData({anonymityPostList: res.data.postList, anonymityCount: res.data.count, loading: false})
+    try {
+      const res = await asyncRequest({
+        url: '/post',
+        data: {
+          postPage,
+          pageSize,
+          type: activePage
         }
+      })
+      if (activePage === 'nearby') {
+        _this.setData({nearbyPostList: res.postList, nearbyCount: res.count, loading: false})
+      } else {
+        // _this.setData({anonymityPostList: res.postList, anonymityCount: res.count, loading: false})
       }
-    })
+    } catch (err) {
+      console.log(err.message)
+    }
   },
   changePostId: function(e) {
     const {activePage, anonymityPostList} = this.data
@@ -102,23 +106,30 @@ Page({
     }
     this.setData({willReplyPostId: postId, atUserId, commentPlaceholder, anonymity, atUserName})
   },
-  changePage (e) {
+  async changePage (e) {
     const activePage = e.currentTarget.dataset.page
     const {postPage, pageSize, anonymityPostList} = this.data
     const _this = this
     if (activePage === 'anonymity' && anonymityPostList.length === 0) {
       this.setData({loading: true})
-      request({
-        url: '/post',
-        data: {
-          postPage,
-          pageSize,
-          type: activePage
-        },
-        success: function (res) {
-          _this.setData({anonymityPostList: res.data.postList, loading: false, anonymityCount: res.data.count})
-        }
-      })
+      try {
+        const res = await asyncRequest({
+          url: '/post',
+          data: {
+            postPage,
+            pageSize,
+            type: activePage
+          }
+        })
+        this.setData({anonymityPostList: res.postList, loading: false, anonymityCount: res.count})
+      } catch (err) {
+        wx.showToast({
+          title: err,
+          icon: 'none'
+        })
+        this.setData({loading: false})
+      }
+      
     }
     this.setData({activePage: e.currentTarget.dataset.page})
   },

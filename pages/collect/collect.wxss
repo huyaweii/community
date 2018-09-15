@@ -19,7 +19,10 @@ page {
   color: #fff;
   position: fixed;
   bottom: 0rpx;
+  border-radius: 0rpx;
+  border: none;
 }
+.publish::after{ border: none; }
 .tabContent{
   width: 20rpx;
   color: #f00;

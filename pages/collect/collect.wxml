@@ -20,6 +20,6 @@
       <span>花名: {{anonymityName}}</span>
       <view bindtap="changeAnonymityName">更换</view>
     </view>
-    <view class="publish" bindtap="publishPost">发布</view>
+    <button loading='{{loading}}' class='publish' bindtap="publishPost">发布</button>
   </view>
 </form>

@@ -13,7 +13,8 @@ Page({
     categoryId: null,
     categoryIndex: 0,
     anonymityName: anonymityList[Math.floor(Math.random(0, 1) * anonymityList.length)],
-    images: []
+    images: [],
+    loading: false
   },
   onLoad: function (options) {
     var _this = this
@@ -61,11 +62,14 @@ Page({
     if (type === 'anonymity') {
       data.anonymity = this.data.anonymityName
     }
+    this.setData({loading: true})
+    const _this = this
     request({
       url: '/post/create',
       data,
       method: 'post',
       success: function (res) {
+        _this.setData({loading: false})
         app.globalData.dynamicActivePage = type
         if (type === 'community') {
           wx.switchTab({

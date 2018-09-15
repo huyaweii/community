@@ -1,5 +1,6 @@
 //app.js
 import {request} from './api'
+
 App({
   onLaunch: function () {
     // 展示本地存储能力
