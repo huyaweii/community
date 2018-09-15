@@ -7,6 +7,3 @@ page .wrapper{
   text-indent: 64rpx;
   text-align: justify;
 }
-.wrapper view {
-  margin-bottom: 30rpx;
-}
