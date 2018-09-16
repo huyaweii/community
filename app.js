@@ -21,6 +21,7 @@ App({
           },
           success: function (res) {
             wx.setStorageSync('token', res.data.token)
+            wx.setStorageSync('userId', res.data.user_id)
           }
         })
         this.getUserInfo()

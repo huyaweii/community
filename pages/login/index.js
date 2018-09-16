@@ -13,7 +13,6 @@ Page({
   getUserInfo: function (result) {
     const _this = this
     const userInfo = result.detail.userInfo
-    console.log(result)
     if (userInfo) {
       app.globalData.userInfo = userInfo
       const {avatarUrl, nickName, gender} = userInfo
@@ -28,12 +27,11 @@ Page({
         },
         success: function (res) {
           const {url} = _this.data
-          console.log(url, 'ti')
           wx.switchTab({
             url
           })
         }
-      })
+      })  
     }
   }
 })

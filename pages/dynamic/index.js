@@ -87,24 +87,34 @@ Page({
       if (activePage === 'nearby') {
         _this.setData({nearbyPostList: res.postList, nearbyCount: res.count, loading: false})
       } else {
-        // _this.setData({anonymityPostList: res.postList, anonymityCount: res.count, loading: false})
+        _this.setData({anonymityPostList: res.postList, anonymityCount: res.count, loading: false})
       }
     } catch (err) {
       console.log(err.message)
     }
   },
   changePostId: function(e) {
-    const {activePage, anonymityPostList} = this.data
-    let {postId, atUserId, commentPlaceholder, atUserName = ''} = e.currentTarget.dataset
-    let anonymity = ''
-    if (activePage === 'anonymity') {
-      const index = anonymityPostList.findIndex(post => post.id === postId)
-      const currentPostAnonymity = anonymityPostList[index].anonymity
-      const tempAnonymitys = anonymityList.filter(anonymity => ![currentPostAnonymity].includes(anonymity))
-      anonymity = tempAnonymitys[Math.floor(Math.random(0, 1) * tempAnonymitys.length)]
-      commentPlaceholder = `花名为${anonymity},${commentPlaceholder}`
-    }
-    this.setData({willReplyPostId: postId, atUserId, commentPlaceholder, anonymity, atUserName})
+    const _this = this
+    app.isAuthed('/pages/dynamic/index', () => {
+      const {activePage, anonymityPostList} = _this.data
+      let {postId, atUserId, commentPlaceholder, atUserName = ''} = e.currentTarget.dataset
+      let anonymity = ''
+      if (activePage === 'anonymity') {
+        const index = anonymityPostList.findIndex(post => post.id === postId)
+        const currentPostAnonymity = anonymityPostList[index].anonymity
+        const replys = anonymityPostList[index].replys
+        const idx = replys.findIndex(reply => reply.user.id === wx.getStorageSync('userId'))
+        if (idx >= 0) {
+          anonymity = replys[idx].user_name
+        } else {
+          const hasUsedAnonymity = [...anonymityPostList[index].replys.map(reply => reply.user_name), currentPostAnonymity]
+          const tempAnonymitys = anonymityList.filter(anonymity => !hasUsedAnonymity.includes(anonymity))
+          anonymity = tempAnonymitys[Math.floor(Math.random(0, 1) * tempAnonymitys.length)]
+        }
+        commentPlaceholder = `花名为${anonymity},${commentPlaceholder}`
+      }
+      _this.setData({willReplyPostId: postId, atUserId, commentPlaceholder, anonymity, atUserName})   
+    })
   },
   async changePage (e) {
     const activePage = e.currentTarget.dataset.page
@@ -145,7 +155,7 @@ Page({
   closeCommentMask: function() {
     this.setData({willReplyPostId: null})
   },
-  submitComment: function(e) {
+  submitComment: async function(e) {
     const {willReplyPostId, atUserId, atUserName, activePage} = this.data
     const content = e.detail.value
     if (!content) {
@@ -162,30 +172,28 @@ Page({
         data.at_user_name = this.data.atUserName
       }
     }
-    request({
+    const res = await asyncRequest({
       url: '/post/reply',
       data,
-      method: 'post',
-      success: res => {
-        if (activePage === 'nearby') {
-          const nearbyPostList = [...this.data.nearbyPostList]
-          const idx = nearbyPostList.findIndex(post => post.id === willReplyPostId)
-          nearbyPostList[idx] = {
-            ...nearbyPostList[idx],
-            replys: [...nearbyPostList[idx].replys, res.data.reply]
-          }
-          this.setData({willReplyPostId: null, nearbyPostList})
-        } else {
-          const anonymityPostList = [...this.data.anonymityPostList]
-          const idx = anonymityPostList.findIndex(post => post.id === willReplyPostId)
-          anonymityPostList[idx] = {
-            ...anonymityPostList[idx],
-            replys: [...anonymityPostList[idx].replys, res.data.reply]
-          }
-          this.setData({willReplyPostId: null, anonymityPostList})
-        }
-      }
+      method: 'post'
     })
+    if (activePage === 'nearby') {
+      const nearbyPostList = [...this.data.nearbyPostList]
+      const idx = nearbyPostList.findIndex(post => post.id === willReplyPostId)
+      nearbyPostList[idx] = {
+        ...nearbyPostList[idx],
+        replys: [...nearbyPostList[idx].replys, res.reply]
+      }
+      this.setData({willReplyPostId: null, nearbyPostList})
+    } else {
+      const anonymityPostList = [...this.data.anonymityPostList]
+      const idx = anonymityPostList.findIndex(post => post.id === willReplyPostId)
+      anonymityPostList[idx] = {
+        ...anonymityPostList[idx],
+        replys: [...anonymityPostList[idx].replys, res.reply]
+      }
+      this.setData({willReplyPostId: null, anonymityPostList})
+    }
   },
   praise: function(e) {
     const {activePage} = this.data

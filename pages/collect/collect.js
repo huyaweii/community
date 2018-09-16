@@ -56,8 +56,7 @@ Page({
       content,
       type,
       category_id: this.data.categoryId,
-      images,
-      openid: wx.getStorageSync('openid')
+      images
     }
     if (type === 'anonymity') {
       data.anonymity = this.data.anonymityName

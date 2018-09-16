@@ -84,8 +84,11 @@ Page({
     })
   },
   changePostId: function(e) {
-    const {postId, atUserId, commentPlaceholder} = e.detail
-    this.setData({willReplyPostId: postId, atUserId, commentPlaceholder})
+    const _this = this
+    app.isAuthed('/pages/index/index', () => {
+      const {postId, atUserId, commentPlaceholder} = e.detail
+      _this.setData({willReplyPostId: postId, atUserId, commentPlaceholder})  
+    })
   },
   toPublish: function(e) {
     app.isAuthed('/pages/index/index', () => {
