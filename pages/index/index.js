@@ -20,6 +20,9 @@ Page({
   },
 
   onShow:function(e){
+    if (app.globalData.previewing) {
+      return app.globalData.previewing = false
+    }
     this.onLoad();
   },
   onReachBottom: function () {
@@ -91,7 +94,7 @@ Page({
     })
   },
   toPublish: function(e) {
-    app.isAuthed('/pages/index/index', () => {
+    app.isAuthed('/pages/collect/collect?type=community', () => {
       wx.navigateTo({
         url: '/pages/collect/collect?type=community'
       })  

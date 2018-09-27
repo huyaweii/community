@@ -42,6 +42,8 @@ page {
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 78rpx;
+  /* box-sizing: border-box; */
 }
 
 
@@ -196,7 +198,7 @@ page {
 } 
 .anonymityInfo .time {
   font-size: 26rpx;
-  color: rgb(218, 222, 222)
+  color: #999;
 }
 .heartWrapper {
   position: relative;

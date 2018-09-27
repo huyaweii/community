@@ -96,13 +96,13 @@ App({
   isAuthed(url, callback) {
     wx.getSetting({
       success: res => {
-        if (res.authSetting['scope.userInfo']) {
+        if (res.authSetting['scope.userInfo'] && this.globalData.userInfo) {
           if (callback) {
             callback()
           }
         } else {
-        wx.navigateTo({
-            url: `/pages/login/index?url=${url}`
+          wx.navigateTo({
+            url: `/pages/login/index?url=${encodeURIComponent(url)}`
           })
         }
       }

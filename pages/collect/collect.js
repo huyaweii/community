@@ -2,9 +2,8 @@
 //获取应用实例
 import {request} from '../../api'
 const qiniuUploader = require("../../utils/qiniuUploader")
-const anonymityList = [
-  '张三丰', '周芷若', '张无忌', '鲁智深', '二狗子', '孙悟空', '猪八戒', '亚瑟', '李白', '妲己'
-]
+import {anonymityList} from '../../config/index.js'
+
 var app = getApp()
 Page({
   
@@ -69,18 +68,20 @@ Page({
       method: 'post',
       success: function (res) {
         _this.setData({loading: false})
-        app.globalData.dynamicActivePage = type
+
         if (type === 'community') {
           wx.switchTab({
             url: '/pages/index/index'
           })
         }
         if (type === 'nearby') {
+          app.globalData.dynamicActivePage = 'nearby'
           wx.switchTab({
             url: '/pages/dynamic/index'
           })
         }
         if (type === 'anonymity') {
+          app.globalData.dynamicActivePage = 'anonymity'
           wx.switchTab({
             url: '../dynamic/index?activePage=anonymity'
           });

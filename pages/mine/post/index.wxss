@@ -1,3 +1,6 @@
 page {
   background: #efeded;
 }
+.cellText view {
+  font-size: 36rpx !important;
+}

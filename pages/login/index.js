@@ -27,8 +27,8 @@ Page({
         },
         success: function (res) {
           const {url} = _this.data
-          wx.switchTab({
-            url
+          wx.navigateTo({
+            url: decodeURIComponent(url)
           })
         }
       })  

@@ -34,6 +34,7 @@
   height: 100vh;
   padding-top: 200rpx; 
   color: #666;
+  box-sizing: border-box;
 }
 .statusWrap text {
   margin-top: 10rpx;
@@ -68,4 +69,10 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+.loadingMt {
+  padding-top: 50rpx;
+}
+.loadingWrapper {
+  padding-top: 140rpx;
 }

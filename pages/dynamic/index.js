@@ -7,7 +7,6 @@ import {anonymityList} from '../../config/index.js'
 
 Page({
   data: {
-    activePage: 'nearby',
     showSelectModal: false,
     nearbyPostList: [],
     anonymityPostList: [],
@@ -21,6 +20,9 @@ Page({
     anonymityCount: 0,
   },
   onShow: function(e){
+    if (app.globalData.previewing) {
+      return app.globalData.previewing = false
+    }
     this.onLoad();
   },
   onPullDownRefresh: function(){
@@ -64,15 +66,15 @@ Page({
           if (activePage === 'nearby') {
             _this.setData({nearbyPostList: [...nearbyPostList, ...res.data.postList], pullUpLoading: false, postId})
           } else {
-            // _this.setData({anonymityPostList: [...postList, ...res.data.postList], pullUpLoading: false, postId})
+            _this.setData({anonymityPostList: [...postList, ...res.data.postList], pullUpLoading: false, postId})
           }
         }
       })
     }
   },
   onLoad: async function (options) {
-    const activePage = app.globalData.dynamicActivePage
-    this.setData({activePage})
+    const activePage = app.globalData.dynamicActivePage || 'nearby'
+    this.setData({activePage, loading: true})
     const {postPage, pageSize} = this.data
     const _this = this
     try {
@@ -90,7 +92,10 @@ Page({
         _this.setData({anonymityPostList: res.postList, anonymityCount: res.count, loading: false})
       }
     } catch (err) {
-      console.log(err.message)
+      wx.showToast({
+        title: err,
+        icon: 'none'
+      })
     }
   },
   changePostId: function(e) {
@@ -121,7 +126,8 @@ Page({
     const {postPage, pageSize, anonymityPostList} = this.data
     const _this = this
     if (activePage === 'anonymity' && anonymityPostList.length === 0) {
-      this.setData({loading: true})
+      this.setData({loading: true, activePage})
+      app.globalData.dynamicActivePage = activePage
       try {
         const res = await asyncRequest({
           url: '/post',
@@ -137,11 +143,11 @@ Page({
           title: err,
           icon: 'none'
         })
-        this.setData({loading: false})
       }
-      
+    } else {
+      this.setData({activePage: e.currentTarget.dataset.page})
+      app.globalData.dynamicActivePage = activePage    
     }
-    this.setData({activePage: e.currentTarget.dataset.page})
   },
   toggleSelectModal () {
     const {activePage} = this.data
@@ -235,6 +241,7 @@ Page({
   },
   preview: function(e) {
     const {idx, urls} = e.currentTarget.dataset
+    return
     wx.previewImage(
       {
         current: idx, 

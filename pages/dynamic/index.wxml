@@ -56,6 +56,7 @@
         </view>
         <view class="post">
           <view class="content">{{post.content}}</view>
+          <post-image images="{{post.images}}"></post-image>
           <!--<view class='reply'><span class='user'>小小鸟</span> 好好学习，天天向上</view>-->
           <view 
             class='replyDetail' 
@@ -72,7 +73,6 @@
               <span class='user'>{{reply.user_name}} </span><span wx:if="{{reply.at_user_id}}"><span class='response'>回复了</span><span class='atUser'> {{reply.at_user_name}} </span></span>
               <span class='replyContent'>{{reply.content}} </span>
           </view>
-          <post-image images="{{post.images}}"></post-image>
           <view class='iconWrapper'>
             <span class='heartWrapper' bindtap="praise" data-status="{{post.isPraised}}" data-post-id="{{post.id}}">
               <span class='heartCount' wx:if="{{post.praiseCount > 0}}">{{post.praiseCount}}</span>

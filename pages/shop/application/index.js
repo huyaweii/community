@@ -11,7 +11,8 @@ Page({
     services: [],
     selectedService: {},
     shopkeeper: null,
-    showForm: true
+    showForm: true,
+    loading: true
   },
   onLoad: async function (options) {
     app.isAuthed('/pages/shop/application/index')
@@ -21,9 +22,9 @@ Page({
     if (shopkeeper.length > 0) {
       const {shop_name, keeper_name, telephone, address, service_id} = shopkeeper[0]
       const selectedService = services.find(service => service.id === service_id)
-      this.setData({services, showForm: false, shopkeeper: shopkeeper[0], shopName: shop_name, keeperName: keeper_name, telephone, address, selectedService})
+      this.setData({services, showForm: false, shopkeeper: shopkeeper[0], shopName: shop_name, keeperName: keeper_name, telephone, address, selectedService, loading: false})
     } else {
-      this.setData({services})
+      this.setData({services, loading: false})
     }
   },
   change: function(e) {
