@@ -1,0 +1,17 @@
+.wrapper {
+  background: #fff;
+  margin: 30rpx 20rpx;
+  border-radius: 10rpx;
+  padding: 20rpx;
+  font-size: 34rpx;
+}
+.name {
+  font-size: 32rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.icon-dianhua {
+  color: #50a350;
+  font-size: 38rpx;
+}

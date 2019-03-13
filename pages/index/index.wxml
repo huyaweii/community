@@ -1,55 +1,13 @@
-<!--index.wxml-->
-<view class="container">
-  <view class="banner">
-    <image src="http://ojs08uydv.bkt.clouddn.com/banner.jpg" />
-  </view>
-  <view class="nav">
-    <navigator url="/pages/shop/index" hover-class="navigator-hover" class="wrapper">
-      <view class='tradeWrap shopWrap'>
-        <i class='iconfont icon-shop'/>
-      </view>
-      <span class="tit">商家查询</span>
-    </navigator>
-    <navigator url="/pages/postByCategory/index?categoryId=1&categoryName=二手交易" hover-class="navigator-hover" class="wrapper">
-      <view class='tradeWrap'>
-        <i class='iconfont icon-jiaoyijilu'/>
-      </view>
-      <span class="tit">二手交易</span>
-    </navigator>
-    <navigator url="/pages/postByCategory/index?categoryId=2&categoryName=房屋租售" hover-class="navigator-hover" class="wrapper">
-      <view class='tradeWrap rentWrap'>
-        <i class='iconfont icon-fangwuzushou'/>
-      </view>
-      <span class="tit">房屋租售</span>
-    </navigator>
-    <navigator url="/pages/postByCategory/index?categoryId=3&categoryName=求职招聘" class="wrapper">
-      <view class='tradeWrap jobWrap'>
-        <i class='iconfont icon-zhaopin'/>
-      </view>
-      <span class="tit">求职招聘</span>
-    </navigator>
-    <navigator url="/pages/postByCategory/index?categoryId=4&categoryName=失物招领" hover-class="navigator-hover" class="wrapper">
-      <view class='tradeWrap foundWrap'>
-        <i class='iconfont icon-found'/>
-      </view>
-      <span class="tit">失物招领</span>
-    </navigator>
-  </view>
-  <view class='loadingWrapper' wx:if="{{loading}}">
-    <loading size='large' title='加载中...'></loading>
-  </view>
-  <view class="list" wx:else>
-    <community-post postList="{{postList}}" bind:changePostId="changePostId"></community-post>
-  </view>
-  <view class='pullUpLoading' wx:if="{{pullUpLoading}}">
-      <loading></loading>
-  </view>
-  <view class='mask' wx:if="{{willReplyPostId}}" bindtap="closeMask">
-    <view class='commentContainer'>
-      <input type='text' class='commentInput' catchtap placeholder="{{commentPlaceholder}}" focus confirm-type="send" bindconfirm='submitComment'/>
+
+<view class='wrapper'>
+    <view class='title'><span>服务</span></view>
+    <view class='serviceWrapper'>
+      <navigator wx:for="{{services}}" wx:for-item="service" wx:key="id" class="service {{(index % 3) === 2 ? 'noBolder' : null}}" hover-class="activeService" url='/pages/list/index?serviceId={{service.id}}'>
+        <i class="iconfont icon-{{servicesIcon[service['name']]}}"></i>
+        <span>{{service['name']}} {{idx}}</span>
+      </navigator>
     </view>
-  </view>
-  <view hover-class="navigator-hover" class="wrapper" bindtap='toPublish'>
-    <view class="add">+</view>
-  </view>
+    <view class="footer">
+      <navigator url='/pages/about/index'>关于杨芬港百事通</navigator>|<navigator url='/pages/apply/index'>申请免费入驻</navigator>
+    </view>
 </view>

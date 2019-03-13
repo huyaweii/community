@@ -10,7 +10,7 @@
 	"compileType": "miniprogram",
 	"libVersion": "1.9.94",
 	"appid": "wx3683e9d056495ca8",
-	"projectname": "community-os",
+	"projectname": "community-tool",
 	"isGameTourist": false,
 	"condition": {
 		"search": {

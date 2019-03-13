@@ -11,19 +11,19 @@ App({
     wx.login({
       success: loginResult => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
-        request({
-          url: '/login',
-          data: {
-              code: loginResult.code,
-              // name: userInfo.nickName,
-              // avatar: userInfo.avatarUrl,
-              // gender: userInfo.gender
-          },
-          success: function (res) {
-            wx.setStorageSync('token', res.data.token)
-            wx.setStorageSync('userId', res.data.user_id)
-          }
-        })
+        // request({
+        //   url: '/login',
+        //   data: {
+        //       code: loginResult.code,
+        //       // name: userInfo.nickName,
+        //       // avatar: userInfo.avatarUrl,
+        //       // gender: userInfo.gender
+        //   },
+        //   success: function (res) {
+        //     wx.setStorageSync('token', res.data.token)
+        //     wx.setStorageSync('userId', res.data.user_id)
+        //   }
+        // })
         this.getUserInfo()
         // wx.getUserInfo({
         //   success: function (userResult) {
@@ -76,18 +76,18 @@ App({
       success: function (userResult) {
         const userInfo = userResult.userInfo
         _this.globalData.userInfo = userInfo
-        request({
-          url: '/update_user',
-          data: {
-              name: userInfo.nickName,
-              avatar: userInfo.avatarUrl,
-              gender: userInfo.gender,
-              openid: wx.getStorageSync('openid')
-          },
-          method: 'post',
-          success: function (res) {    
-          }
-        })
+        // request({
+        //   url: '/update_user',
+        //   data: {
+        //       name: userInfo.nickName,
+        //       avatar: userInfo.avatarUrl,
+        //       gender: userInfo.gender,
+        //       openid: wx.getStorageSync('openid')
+        //   },
+        //   method: 'post',
+        //   success: function (res) {    
+        //   }
+        // })
       },
       fail: function (userError) {
       }
@@ -110,6 +110,10 @@ App({
   },
   globalData: {
     userInfo: null,
-    dynamicActivePage: 'nearby'
+    dynamicActivePage: 'nearby',
+    community: {
+      name: '',
+      code: ''
+    }
   }
 })

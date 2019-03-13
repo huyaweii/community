@@ -1,7 +1,0 @@
-<view>
-  <view class='wrapper'>
-    <p>欢迎大家提出自己的想法和建议，我们会不断开发新的功能来满足大家的需要。</p>
-    <textarea class='text' row='20' bindinput='change' value="{{value}}"/>
-  </view>
-  <view class="submit" bindtap="submit">提交</view>
-</view>

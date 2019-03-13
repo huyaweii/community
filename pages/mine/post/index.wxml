@@ -1,6 +1,0 @@
-<view class="listWrapper">
-    <i-cell-group>
-      <i-cell title="我的社区动态" is-link url="./list?type=community" i-class='cellText'></i-cell>
-      <i-cell title="我的附近动态" is-link url="./list?type=nearby" i-class='cellText'></i-cell>
-    </i-cell-group>
-  </view>

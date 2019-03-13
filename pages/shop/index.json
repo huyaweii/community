@@ -1,6 +1,0 @@
-{
-  "usingComponents": {
-    "i-icon": "../../dist/icon/index",
-    "post-image": "../../components/postImage/index"
-  }
-}

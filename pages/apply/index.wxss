@@ -1,0 +1,6 @@
+view {
+  margin: 20rpx 20rpx 0rpx 20rpx;
+  font-size: 32rpx;
+  color: #666;
+  text-indent: 64rpx;
+}

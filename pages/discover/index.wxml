@@ -1,4 +1,0 @@
-<i-cell-group>
-  <i-cell title="我的动态" is-link url="./post/index"></i-cell>
-  <i-cell title="关于街坊社" is-link url="./about/index"></i-cell>
-</i-cell-group>
