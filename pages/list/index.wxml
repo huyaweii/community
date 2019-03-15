@@ -1,7 +1,15 @@
-<view class='wrapper' wx:for="{{shopkeepers}}" wx:for-item="shopkeeper">
-  <view class='name'>{{shopkeeper.keeper_name}} <i class="iconfont icon-dianhua"></i></view>
-  <view>服务范围：{{shopkeeper.service_area}}</view>
-  <view>主营：{{shopkeeper.main_business}}</view>
+<view class='loadingWrapper' wx:if="{{loading}}">
+  <loading size='large' title='加载中...'></loading>
 </view>
+<view wx:else>
+  <view class='wrapper' wx:for="{{shopkeepers}}" wx:for-item="shopkeeper" wx:key="id">
+    <view class='name'>{{shopkeeper.keeper_name}} 
+      <i bindtap='call' class="iconfont icon-dianhua" data-tel="{{shopkeeper.telephone}}"></i>
+    </view>
+    <view>服务范围：{{shopkeeper.service_area}}</view>
+    <view>主营：{{shopkeeper.main_business}}</view>
+  </view>
+</view>
+
 
 

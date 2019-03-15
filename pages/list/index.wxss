@@ -15,3 +15,6 @@
   color: #50a350;
   font-size: 38rpx;
 }
+.loadingWrapper {
+  padding-top: 140rpx;
+}
