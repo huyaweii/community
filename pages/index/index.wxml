@@ -1,13 +1,13 @@
 
 <view class='wrapper'>
-    <view class='title'><span>服务</span></view>
-    <view class='serviceWrapper'>
-      <navigator wx:for="{{services}}" wx:for-item="service" wx:key="id" class="service {{(index % 3) === 2 ? 'noBolder' : null}}" hover-class="activeService" url='/pages/list/index?serviceId={{service.id}}'>
-        <i class="iconfont icon-{{service.icon}}"></i>
-        <span>{{service['name']}} {{idx}}</span>
-      </navigator>
-    </view>
-    <view class="footer">
-      <navigator url='/pages/about/index'>关于杨芬港小灵通</navigator>|<navigator url='/pages/apply/index'>申请免费入驻</navigator>
-    </view>
+  <view class='title'><span>服务</span></view>
+  <view class='serviceWrapper'>
+    <navigator wx:for="{{services}}" wx:for-item="service" wx:key="id" class="service {{(index % 3) === 2 ? 'noBolder' : null}}" hover-class="activeService" url='/pages/list/index?serviceId={{service.id}}'>
+      <i class="iconfont icon-{{service.icon}}" style="color: {{service['icon_color']}}"></i>
+      <span>{{service['name']}} {{idx}}</span>
+    </navigator>
+  </view>
+  <view class="footer">
+    <navigator url='/pages/about/index'>关于杨芬港小灵通</navigator>|<navigator url='/pages/apply/index'>申请免费入驻</navigator>
+  </view>
 </view>

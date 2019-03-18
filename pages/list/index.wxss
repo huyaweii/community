@@ -18,3 +18,14 @@
 .loadingWrapper {
   padding-top: 140rpx;
 }
+.tabWrap {
+  display: flex;
+}
+.tabWrap .tab {
+  border: 1px solid #fd790d;
+  font-size: 30rpx;
+  color: #fd790d;
+  border-radius: 10rpx;
+  margin: 15rpx 15rpx 0rpx 0rpx;
+  padding: 0rpx 5rpx;
+}

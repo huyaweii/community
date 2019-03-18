@@ -12,6 +12,9 @@ Page({
     const {shopkeepers} = await asyncRequest({
       url: `/merchantService/${options.serviceId}/shopkeepers`,
     })
+    shopkeepers.forEach(shopkeeper => {
+      shopkeeper.tabs = shopkeeper.tabs.split(',')
+    });
     this.setData({shopkeepers, loading: false})
   },
   call: function (e) {

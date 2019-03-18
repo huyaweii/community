@@ -8,6 +8,10 @@
     </view>
     <view>服务范围：{{shopkeeper.service_area}}</view>
     <view>主营：{{shopkeeper.main_business}}</view>
+    <view class="tabWrap"> 
+      {{shopkeeper.tab}}
+     <view wx:for="{{shopkeeper.tabs}}" wx:key="index" wx:for-item="tab" class="tab">{{tab}}</view>
+    </view>
   </view>
 </view>
 

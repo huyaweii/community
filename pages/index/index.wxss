@@ -50,18 +50,6 @@
 .service i {
   font-size: 64rpx;
 }
-.icon-repair {
-  color: rgb(22, 168, 80)
-}
-.icon-decoration {
-  color: rgb(220, 130, 50)
-}
-.icon-lock {
-  color: rgb(220, 80, 100)
-}
-.icon-broadband {
-  color: rgb(220, 130, 50)
-}
 .icon-apply {
   display: block;
   padding-top: 8rpx;
