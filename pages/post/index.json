@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "community-post": "../../components/communityPost/index"
+  }
+}

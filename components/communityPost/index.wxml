@@ -1,22 +1,20 @@
-<view class="block" wx:for="{{postList}}" wx:for-item="post" wx:key="id">
-  <view class="info">
-    <image src="{{post.user.avatar}}" class="avatar"/>
-    <view class="detail">
-      <span class="name">{{post.user.name}}</span>
-      <span class="time">{{post.create_time}}</span>
-    </view>
+<!-- <view class="block" wx:for="{{postList}}" wx:for-item="post" wx:key="id"> -->
+<view class="info">
+  <image src="{{post.user.avatar_url}}" class="avatar"/>
+  <view class="detail">
+    <span class="name">{{post.user.nick_name}}</span>
+    <span class="time">{{post.create_time}}</span>
   </view>
-  <view class="post">
-    <view class="content"><span class='tag'>#{{post.categoryName}}# </span>{{post.content}}</view>
-    <post-image images="{{post.images}}"></post-image>
-    
-    <view class='replyDetail' wx:for="{{post.replys}}" wx:for-item="reply" wx:key="id" hover-class='activeReply' bindtap="changePostId" data-post-id="{{post.id}}" data-at-user-id="{{reply.user.id}}" data-comment-placeholder="{{'回复' + reply.user.name}}">
-      <span class='user'>{{reply.user.name}} </span><span wx:if="{{reply.at_user_id}}"><span class='response'>回复了</span><span class='atUser'> {{reply.at_user.name}} </span></span>
-      <span class='replyContent'>{{reply.content}} </span>
-    </view>
-
-    <view class="reply">
+</view>
+<view class="post">
+  <view class="content">{{post.content}}</view>
+  <post-image images="{{post.images}}"></post-image>
+  <view class="reply">
+    <view class="tab" wx:if="{{post.tab !== '其他'}}">{{post.tab}}</view>
+    <view wx:else />
+    <navigator wx:if="{{!isDetail}}" url="/pages/post/detail/index?id={{post.id}}" class="comment">
       <i class='iconfont icon-comment' bindtap="changePostId" data-post-id="{{post.id}}" data-at-user-id="{{null}}" data-comment-placeholder="请输入评论内容"></i>
-    </view>
+      <span>{{post.commentCount || '评论' }}</span>
+    </navigator>
   </view>
 </view>

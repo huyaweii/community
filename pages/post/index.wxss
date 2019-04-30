@@ -1,0 +1,26 @@
+.edit {
+  background: #fff;
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  position: fixed;
+  right: 10px;
+  bottom: 120rpx;
+  box-shadow: 2rpx 2rpx 5rpx #999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+}
+.icon-edit {
+  font-size: 70rpx;
+  color: #50a350;
+}
+.block {
+  margin-bottom: 20rpx;
+  background: #fff;
+  padding: 10px 0px;
+}
+.block:last-of-type {
+  margin-bottom: 0rpx;
+}

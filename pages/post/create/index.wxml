@@ -1,0 +1,21 @@
+<form>
+  <view class="section">
+    <textarea placeholder="要发布的内容..." class="content" bindinput="changeContent"/>
+    <view class='pictureOuter'>
+      <view class="pictureWrap">
+        <!--<image wx:for="{{images}}" wx:for-item="image" src="{{image}}" />-->
+        <view class='imageOuter' wx:for="{{images}}" wx:for-item="img" wx:key="img" data-current="{{img}}" bindtap='preview' data-idx="{{idx}}" data-urls="{{images}}">
+          <view class='imageWrapper' style="background-image: url({{img}})"/>
+        </view>
+        <view class='iconWrapper' bindtap='didPressChooseImage'><i class='iconfont icon-add'/></view>
+      </view>
+    </view>
+    <picker range="{{tabList}}" value='{{index}}' range-key='name' bindchange="changeTab">
+      <view class="category">
+        <span>{{tabList[tabIndex].name}}</span>
+        <span class='iconfont icon-right'></span>  
+      </view>
+    </picker>
+    <view class="publish" bindtap="publishPost">发布</view>
+  </view>
+</form>

@@ -1,8 +1,12 @@
 Component({
   properties: {
-    postList: {
-      type: Array,
-      value: [],
+    post: {
+      type: Object,
+      value: {},
+    },
+    isDetail: {
+      type: Boolean,
+      value: false
     },
     changePostId: {
       type: Function,

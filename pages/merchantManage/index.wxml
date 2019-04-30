@@ -1,0 +1,11 @@
+<i-cell-group>
+  <!-- <i-cell title="订单管理" is-link url="./post/index" i-class='cellText'>
+    <i class='iconfont icon-dynamic' slot="icon" />
+  </i-cell> -->
+  <i-cell title="商品列表" is-link url="/pages/merchantManage/productList/index" i-class='cellText'>
+    <!-- <i class='iconfont icon-dynamic' slot="icon" /> -->
+  </i-cell>
+  <i-cell title="添加商品" is-link url="/pages/merchantManage/productCreate/index" i-class='cellText'>
+    <!-- <i class='iconfont icon-about' slot="icon" /> -->
+  </i-cell>
+</i-cell-group>

@@ -16,6 +16,9 @@
 .bar span {
   margin: -4rpx 10rpx 0rpx 10rpx;
 }
+.outer {
+  margin-bottom: 20rpx;
+}
 .serviceWrapper {
   width: 100%;
   display: flex;
@@ -33,6 +36,7 @@
   flex-direction: row;
   justify-content: space-between;
 }
+
 .service {
   display: flex;
   flex-direction: column;
@@ -41,11 +45,12 @@
   height: 260rpx;
   justify-content: center;
   align-items: center;
-  border-right: 1px solid #efeded;
+  border-right: 1rpx solid #efeded;
+  border-bottom: 1rpx solid #efeded;
   color: #666;
   font-size: 34rpx;
   box-sizing: border-box;
-  margin-bottom: 1rpx;
+  /* margin-bottom: 1rpx; */
 }
 .service i {
   font-size: 64rpx;
@@ -74,5 +79,5 @@
   margin: 0 10rpx;
 }
 .noBolder {
-  border: none;
+  border-right: none;
 }

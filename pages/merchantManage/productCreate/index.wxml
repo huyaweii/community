@@ -1,0 +1,11 @@
+<view class='container'>
+  <view class="formItem"><view class="title" name='name'>名称:</view><input bindinput='onChange' data-name='name' maxlength="20" value="{{name}}"/></view>
+  <view class="formItem"><view class="title">价格:</view><input bindinput='onChange' type="digit" data-name='price' value="{{price}}"/></view>
+  <view class="formItem"><view class="title">描述:</view><input bindinput='onChange' data-name='desc' maxLength="20" value="{{desc}}"/></view>
+  <view class="formItem formPic">
+    <view class="title">图片:</view>
+    <image wx:if="{{pic}}" src="{{pic}}" />
+    <view wx:else class='iconWrapper' bindtap='choosePic'><i class='iconfont icon-add'/></view>
+  </view> 
+  <view class="submit" bindtap="submit">提交</view>
+</view>

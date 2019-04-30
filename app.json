@@ -1,9 +1,18 @@
 {
   "pages":[
     "pages/index/index",
-    "pages/list/index",
+    "pages/serviceList/index",
     "pages/about/index",
-    "pages/apply/index"
+    "pages/apply/index",
+    "pages/shop/index",
+    "pages/mine/index",
+    "pages/merchantManage/index",
+    "pages/merchantManage/productCreate/index",
+    "pages/merchantManage/productList/index",
+    "pages/post/index",
+    "pages/post/create/index",
+    "pages/post/detail/index",
+    "pages/login/index"
   ],
   "window":{
     "backgroundTextStyle":"light",
@@ -11,6 +20,30 @@
     "navigationBarTitleText": "杨芬港小灵通",
     "navigationBarTextStyle":"white",
     "onReachBottomDistance": 300
+  },
+  "tabBar": {
+    "color": "#999",
+    "selectedColor": "#fd790d",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "本地服务",
+        "iconPath": "./static/images/service.png",
+        "selectedIconPath": "./static/images/service-selected.png"
+      }, 
+      {
+        "pagePath": "pages/post/index",
+        "text": "杨芬港大喇叭",
+        "iconPath": "./static/images/trumpet.png",
+        "selectedIconPath": "./static/images/trumpet-selected.png"
+      }, 
+      {
+        "pagePath": "pages/mine/index",
+        "text": "我的收藏",
+        "iconPath": "./static/images/collect.png",
+        "selectedIconPath": "./static/images/collect-selected.png"
+      }
+    ]
   }
 }
 

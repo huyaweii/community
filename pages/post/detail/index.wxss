@@ -1,0 +1,62 @@
+.block {
+  margin-bottom: 20rpx;
+  background: #fff;
+  padding: 10px 0px;
+}
+.replyWrapper {
+  margin-bottom: 140rpx;
+}
+.reply {
+  display: flex;
+  flex-direction: row;
+  font-size: 26rpx;
+  align-items: flex-start;
+  color: #999;
+  padding: 20rpx 40rpx;
+  border-bottom: 1px solid #eae8e8;
+}
+.replyAvatar {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  margin-right: 10rpx;
+}
+.content {
+  font-size: 30rpx;
+  color: #333;
+  margin-top: 10rpx;
+}
+.comment {
+  position: fixed;
+  left: 0rem;
+  bottom: 0rem;
+  width: 100%;
+  background: #fff;
+}
+
+
+.commentContainer {
+  position: fixed;
+  left: 0rpx;
+  bottom: 0rpx;
+  width: 100%;
+  height: 120rpx;
+  background: #fff;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.commentInput {
+  width: 95%;
+  border: 1px solid #e2dede;
+  padding: 12rpx 0rpx 12rpx 10rpx;
+  font-size: 28rpx;
+  border-radius: 10rpx;
+}
+.replyed {
+  margin-right: 5rpx;
+}
+.replyName {
+  color: #7594B3;
+}

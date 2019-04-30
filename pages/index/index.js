@@ -1,17 +1,18 @@
-var app = getApp()
+const app = getApp()
 import {asyncRequest} from '../../api'
 const regeneratorRuntime = require('../../utils/runtime.js')
 
 Page({
   data: {
-    services: []
+    recommendServices: [],
+    convenienceServices: []
   },
   onLoad: async function (options) {
     const _this = this
-    const {services} = await asyncRequest({
+    const {recommendServices, convenienceServices} = await asyncRequest({
       url: '/merchantService',
     })
   
-    this.setData({services})
+    this.setData({recommendServices, convenienceServices})
   }  
 })

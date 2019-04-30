@@ -1,0 +1,46 @@
+<view>
+  <navigator url="/pages/merchantManage/index" class="header" wx:if="{{isOpen}}">进入商家管理 >></navigator>
+  <block wx:if="{{shopkeepers.length > 0}}">
+    <view class='wrapper' wx:for="{{shopkeepers}}" wx:for-item="shopkeeper" wx:key="id">
+      <view class='name'>
+
+        <view wx:if="{{shopkeeper.isOpen}}" class="enterShop">{{shopkeeper.keeper_name}}<span class='m-x-10'>|</span><navigator url='/pages/shop/index?openid={{shopkeeper.openid}}'>进店逛逛</navigator>(仅商品展示)</view>
+        <view wx:else class="enterShop">{{shopkeeper.keeper_name}}</view>
+
+        <i bindtap='call' class="iconfont icon-dianhua" data-tel="{{shopkeeper.telephone}}"></i>
+      </view>
+      <view>服务范围：{{shopkeeper.service_area}}</view>
+      <view>主营：{{shopkeeper.main_business}}</view>
+      <view class="tabWrap"> 
+        <view wx:for="{{shopkeeper.tabs}}" wx:key="index" wx:for-item="tab" class="tab">{{tab}}</view>
+      </view>
+      <view class="praiseWrap" bindtap='toggleLike' data-shopkeeper-id="{{shopkeeper.id}}">
+        <view class="location"><i class="iconfont icon-location"/> {{shopkeeper.location}}</view>
+        <!-- <view style="color: {{shopkeeper.isLike ? '#fd790d' : '#bdbbbb'}}">
+          <i class="iconfont icon-praise"/> 靠谱 {{shopkeeper.like_count}}
+        </view> -->
+      </view>
+    </view>
+  </block>
+  <view wx:else class="empty">您暂时还没有收藏，您可以通过找到相应服务点击靠谱进行收藏</view>
+</view>
+  <!-- <view class="order">
+    <view class="time">2019-09-02 18:34:00 <span>商家未接单</span></view>
+    <view class="product">
+      <view class="infoWrapper">
+        <view class="info">
+          <span>姓名：</span><span>刘志鹏</span>
+        </view>
+        <view class="info">
+          <span>电话：</span><span>18332537622</span>
+        </view>
+        <view class="info">
+          <span>地址：</span><span>小庙村</span>
+        </view>
+      </view>
+      <view class="detail">查看详情</view>
+    </view>
+
+    <view class="total"><span>共3件商品</span> 总共100元</view>
+  </view> -->
+<!-- </view> -->

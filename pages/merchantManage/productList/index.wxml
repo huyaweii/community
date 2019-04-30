@@ -1,0 +1,22 @@
+<view>
+  <view class="product" wx:for="{{products}}" wx:for-item="product">
+    <view class="detail">
+      <image src="{{product.pic}}" />
+      <view class="infoWrapper">
+        <view class="info">
+          <span class="title">名称：</span><span>{{product.name}}</span>
+        </view>
+        <view class="info">
+          <span class="title">价格：</span><span>{{product.price}}</span>
+        </view>
+        <view class="info">
+          <span class="title">描述：</span><span>{{product.desc}}</span>
+        </view>
+      </view>
+    </view>
+    <view class="action">
+      <navigator class="update" url="/pages/merchantManage/productCreate/index?productId={{product.id}}">编辑</navigator>
+      <span class="delete" bindtap='delete' data-id='{{product.id}}'>删除</span>
+    </view>
+  </view>
+</view>

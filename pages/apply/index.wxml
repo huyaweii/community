@@ -1,1 +1,11 @@
-<view>如果想申请入驻，请添加微信进行申请，微信号huyawei21。</view>
+<view wx:if="{{!isSubmited}}">
+  <view class="des">如果想申请入驻，请提交表单信息，然后添加微信进行申请，微信号huyawei21。</view>
+  <view class="form">
+    <view class="formItem"><view class="title" name='name'>姓名:</view><input bindinput='changeName'/></view>
+    <view class="formItem"><view class="title">手机号:</view><input bindinput='changeTel'/></view>
+    <button class="submit" bindtap='submit'>提交</button>
+  </view>
+</view>
+<view wx:else>
+  <view class="des">表单信息已提交，请添加微信进行申请，微信号huyawei21。</view>
+</view>

@@ -13,7 +13,7 @@
 }
 .icon-dianhua {
   color: #50a350;
-  font-size: 38rpx;
+  font-size: 48rpx;
 }
 .loadingWrapper {
   padding-top: 140rpx;
@@ -28,4 +28,32 @@
   border-radius: 10rpx;
   margin: 15rpx 15rpx 0rpx 0rpx;
   padding: 0rpx 5rpx;
+}
+.praiseWrap {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  color: #bdbbbb;
+  margin-top: 5rpx;
+}
+.location {
+  font-size: 30rpx;
+}
+.location i {
+  font-size: 30rpx;
+}
+.enterShop {
+  display: flex;
+  flex-direction: row;
+}
+.enterShop navigator {
+  color: #1a73e8;
+}
+
+.empty {
+  font-size: 32rpx;
+  color: #999;
+  padding: 200rpx 80rpx;
+  text-align: center;
 }

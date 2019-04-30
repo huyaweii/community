@@ -1,0 +1,59 @@
+<view class="container">
+  <view class="left_tabbar">
+    <scroll-view scroll-y="true" style="height:{{deviceHeight}}px;" class="left_tabbar_list">
+      <view bindtap="changeTab" data-index="{{index}}" data-name="{{item.tabName}}" class="left_tabbar_item {{activeIndex==index?'active':''}}" wx:for="{{tabs}}" wx:key="1">{{item.tabName}}</view>
+    </scroll-view>
+  </view>
+  <view class="right_content">
+    <scroll-view bindscrolltolower="getMore" scroll-y="true" style="height:{{deviceHeight}}px;" class="tab_panel">
+      <view>
+        <view wx:for="{{products}}" wx:for-item="product" wx:key="id" class='product'>
+          <image src="{{product.pic}}" />
+          <view class="info">
+            <view class="nameWrapper">
+              <span>{{product.name}}</span>
+              <span>{{product.desc}}</span>
+            </view>
+            <view class="price">{{product.price}}元</view>
+          </view>
+          <!-- <view class='number'>
+            <span class='sub' bindtap='deleteProduct' data-id="{{product.id}}" data-price="{{product.price}}" data-name="{{product.name}}">-</span>
+            <span class='val'>{{(cart[product.id] && cart[product.id].amount) || 0}}</span>
+            <span class='add' bindtap='addProduct' data-id="{{product.id}}" data-price="{{product.price}}" data-name="{{product.name}}">+</span>
+          </view> -->
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+  <view class="call" bindtap="call" data-telephone="{{telephone}}"><i class="iconfont icon-dianhua"></i></view>
+  <!-- <view class="cart" wx:if="{{count > 0}}">
+    <view class="cartInner">
+      <view class="iconInner">
+        <view class="count">{{count}}</view>
+        <i class="iconfont icon-cart" bindtap="toggleModalVisible"/>
+      </view>
+      <view class="priceInner">
+        <span>{{amount}}元</span>
+        <span>总金额</span>
+      </view>
+    </view>
+    <view class="submit">去下单</view>
+  </view> -->
+</view>
+
+<!-- <view class="modal" wx:if="{{count > 0 && modalVisible}}" bindtap="toggleModalVisible">
+  <view class="chooseProducts">
+    <view class="title">已选商品</view>
+    <view class="chooseProductWrap">
+      <view class="chooseProduct" wx:for="{{cart}}" wx:for-index="key">
+        <span class="name">{{cart[key].name}}</span>
+        <span class="price">{{cart[key].price}}</span>
+        <view class='number'>
+          <span class='sub' catchtap='deleteProduct' data-id="{{key}}" data-price="{{cart[key].price}}" data-name="{{cart[key].name}}">-</span>
+          <span class='val'>{{cart[key].amount || 0}}</span>
+          <span class='add' catchtap='addProduct' data-id="{{key}}" data-price="{{cart[key].price}}" data-name="{{cart[key].name}}">+</span>
+        </view>
+      </view>
+    </view>
+  </view>
+</view> -->

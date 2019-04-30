@@ -6,24 +6,19 @@ App({
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)
     // 登录
     wx.login({
       success: loginResult => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
-        // request({
-        //   url: '/login',
-        //   data: {
-        //       code: loginResult.code,
-        //       // name: userInfo.nickName,
-        //       // avatar: userInfo.avatarUrl,
-        //       // gender: userInfo.gender
-        //   },
-        //   success: function (res) {
-        //     wx.setStorageSync('token', res.data.token)
-        //     wx.setStorageSync('userId', res.data.user_id)
-        //   }
-        // })
+        request({
+          url: '/user/login',
+          data: {
+              code: loginResult.code,
+          },
+          success: function (res) {
+            wx.setStorageSync('token', res.data.token)
+          }
+        })
         this.getUserInfo()
         // wx.getUserInfo({
         //   success: function (userResult) {

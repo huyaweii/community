@@ -1,0 +1,33 @@
+  <view class="block">
+    <community-post post="{{post}}" isDetail="{{true}}" bind:changePostId="2"></community-post>
+  </view>
+  <view class="replyWrapper">
+    <view class="reply" wx:for="{{comments}}" wx:for-item="comment">
+      <image src="{{comment.user.avatar_url}}" class="replyAvatar"/>
+      <view>
+        <span>{{comment.user.nick_name}}</span>
+        <view class="content">
+          <span wx:if="{{comment.at_user_name}}" class="replyed">回复了</span>
+          <span wx:if="{{comment.at_user_name}}" class="replyName">{{comment.at_user_name}}:</span>
+          {{comment.content}}
+        </view>
+        <view bindtap="reply" data-at-user-id="{{comment.create_by}}" data-at-user-name="{{comment.user.nick_name}}" class="m-t-10">回复</view>
+      </view>
+    </view>  
+  </view> 
+
+  <view class='commentContainer'>
+    <input 
+      type='text' 
+      class='commentInput' 
+      catchtap 
+      bindinput="onChange" 
+      value="{{commentContent}}" 
+      placeholder="{{atUserName ? '回复：' + atUserName: '评论~'}}" 
+      focus 
+      confirm-type="send" 
+      bindconfirm='submitComment'
+      data-name='commentContent'
+      adjust-position="{{false}}"
+    />
+  </view>

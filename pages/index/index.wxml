@@ -1,12 +1,24 @@
 
 <view class='wrapper'>
-  <view class='title'><span>服务</span></view>
-  <view class='serviceWrapper'>
-    <navigator wx:for="{{services}}" wx:for-item="service" wx:key="id" class="service {{(index % 3) === 2 ? 'noBolder' : null}}" hover-class="activeService" url='/pages/list/index?serviceId={{service.id}}'>
-      <i class="iconfont icon-{{service.icon}}" style="color: {{service['icon_color']}}"></i>
-      <span>{{service['name']}} {{idx}}</span>
-    </navigator>
+  <view class="outer">
+    <view class='title recommend'><span>推荐服务</span></view>
+    <view class='serviceWrapper'>
+      <navigator wx:for="{{recommendServices}}" wx:for-item="service" wx:key="id" class="service {{(index % 3) === 2 ? 'noBolder' : ''}}" hover-class="activeService" url='/pages/serviceList/index?serviceId={{service.id}}'>
+        <i class="iconfont icon-{{service.icon}}" style="color: {{service['icon_color']}}"></i>
+        <span>{{service['name']}} {{idx}}</span>
+      </navigator>
+    </view>
+  </view>  
+  <view class="outer">
+    <view class='title convenience'><span>便利服务</span></view>
+    <view class='serviceWrapper'>
+      <navigator wx:for="{{convenienceServices}}" wx:for-item="service" wx:key="id" class="service {{(index % 3) === 2 ? 'noBolder' : ''}}" hover-class="activeService" url='/pages/serviceList/index?serviceId={{service.id}}'>
+        <i class="iconfont icon-{{service.icon}}" style="color: {{service['icon_color']}}"></i>
+        <span>{{service['name']}} {{idx}}</span>
+      </navigator>
+    </view>
   </view>
+
   <view class="footer">
     <navigator url='/pages/about/index'>关于杨芬港小灵通</navigator>|<navigator url='/pages/apply/index'>申请免费入驻</navigator>
   </view>

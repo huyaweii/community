@@ -1,0 +1,4 @@
+<view class='wrapper'>
+  <view>小街坊，一个贴心的社区</view>
+  <button open-type="getUserInfo" bindgetuserinfo="getUserInfo" class='userInfoBtn'>授权登录</button>
+</view>

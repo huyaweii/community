@@ -1,6 +1,31 @@
-view {
+.des {
   margin: 20rpx 20rpx 0rpx 20rpx;
   font-size: 32rpx;
   color: #666;
   text-indent: 64rpx;
+}
+.form {
+  margin: 80rpx 20rpx 0rpx 20rpx;
+}
+.formItem {
+  font-size: 32rpx;
+  color: #666;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 20rpx;
+}
+.formItem .title {
+  width: 120rpx;
+}
+.formItem input {
+  border: 1px solid #bdb9b9;
+  flex: 1;
+  padding-left: 10rpx;
+}
+.submit {
+  margin: 40rpx 0rpx 0rpx 0rpx;
+  font-size: 32rpx;
+  padding: 0rpx;
+  width: 160rpx;
 }

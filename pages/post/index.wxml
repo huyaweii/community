@@ -1,0 +1,7 @@
+<view class='block' wx:for="{{postList}}" wx:for-item="post" wx:key="id">
+  <community-post post="{{post}}" bind:changePostId="2"></community-post>
+</view>
+<view class="edit" bindtap="toPublish"><i class="iconfont icon-edit"></i></view>
+<view>
+  <input type='text' />
+</view>
