@@ -14,13 +14,13 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  height: 120rpx;
 }
 .product image {
   width: 120rpx;
   height: 120rpx;
   border-radius: 20rpx;
   margin-right: 10rpx;
+  flex-shrink: 0;
 }
 .product .info {
   display: flex;

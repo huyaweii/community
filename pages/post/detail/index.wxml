@@ -24,10 +24,9 @@
       bindinput="onChange" 
       value="{{commentContent}}" 
       placeholder="{{atUserName ? '回复：' + atUserName: '评论~'}}" 
-      focus 
       confirm-type="send" 
       bindconfirm='submitComment'
       data-name='commentContent'
-      adjust-position="{{false}}"
+      cursor-spacing="{{16}}"
     />
   </view>
