@@ -12,8 +12,10 @@ Page({
     atUserName: ''
   },
   onLoad: async function (options) {
+    wx.showLoading({title: '加载中'})   
     const {post} = await asyncRequest({url: `/post/${options.id}`})
     const {comments} = await asyncRequest({url: `/post/${options.id}/comment`})
+    wx.hideLoading()
     this.setData({post, comments})
   },
   onChange: function (e) {
